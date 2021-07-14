@@ -1,9 +1,13 @@
 package com.service;
 
+import org.springframework.stereotype.Service;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class ListDictionary {
+
+@Service
+public class ListDictionary implements IListDictionary{
 
     Map<String, String> map;
     {

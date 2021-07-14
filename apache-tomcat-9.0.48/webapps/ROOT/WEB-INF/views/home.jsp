@@ -13,7 +13,7 @@
 <body>
 <form action="/dictionary" method="post">
     <label>Eng:</label>
-    <input type="text" name="name" placeholder="Enter eng..."><br>
+    <input type="text" name="name" placeholder="Enter english"><br>
     <input type="submit" value="search">
 </form>
 </body>

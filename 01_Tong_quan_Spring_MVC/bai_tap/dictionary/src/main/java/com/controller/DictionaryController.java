@@ -1,5 +1,6 @@
 package com.controller;
 
+import com.service.IListDictionary;
 import com.service.ListDictionary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,16 +12,19 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class DictionaryController {
 
-    ListDictionary listDictionary = new ListDictionary() ;
+    @Autowired
+    IListDictionary service ;
 
     @GetMapping(value = "/")
     public String goIndex(){
         return "home";
     }
+
+
     @PostMapping( value = "/dictionary")
     public ModelAndView result(@RequestParam String name){
-        String result = listDictionary.find(name);
-        ModelAndView modelAndView = new ModelAndView("result","result",result);
-        return  modelAndView;
+
+
+        return new ModelAndView("result","result",service.find(name));
     }
     }
