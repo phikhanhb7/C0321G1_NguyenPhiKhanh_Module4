@@ -3,6 +3,7 @@ package com.controler;
 import com.service.ConvertServiceImpl;
 import com.service.IConvertService;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ConvertController {
 
-    IConvertService  service = new ConvertServiceImpl() ;
+    @Autowired
+    IConvertService  service ;
     @GetMapping
     public String goHome(){
         return "home";
