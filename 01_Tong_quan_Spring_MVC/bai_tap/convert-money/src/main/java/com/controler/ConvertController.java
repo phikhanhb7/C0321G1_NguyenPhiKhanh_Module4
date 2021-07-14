@@ -14,16 +14,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ConvertController {
 
     @Autowired
-    IConvertService  service ;
+    IConvertService ConvertService;
+
     @GetMapping
-    public String goHome(){
+    public String goHome() {
         return "home";
     }
 
     @PostMapping("abc")
-    public String convert(@RequestParam double a , double b , double c , Model model){
-        double result = service.covert(a, b, c) ;
-        model.addAttribute("result" , result) ;
-        return "home" ;
+    public String convert(@RequestParam double a, double b, double c, Model model) {
+        double result = ConvertService.covert(a, b, c);
+        model.addAttribute("result", result);
+        return "home";
     }
 }
