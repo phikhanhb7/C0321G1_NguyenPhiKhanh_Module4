@@ -46,7 +46,7 @@
     </div>
     <div style="margin-top: 50px">
         <form:button>Update</form:button>
-        <button>Cancel</button>
+        <button type="reset">Cancel</button>
     </div>
 </form:form>
 </body>
