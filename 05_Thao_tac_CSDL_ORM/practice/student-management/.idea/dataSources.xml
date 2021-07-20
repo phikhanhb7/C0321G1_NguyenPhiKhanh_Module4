@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="hibernate.conf.xml/Hibernate" uuid="7bd950f1-e6e5-4518-b8d4-084afeee4208">
+      <driver-ref>mysql</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+D:/IntellijProjects/SelfTestProjects/selftest-spring-orm-4/src/main/resources/hibernate.conf.xml</remarks>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/student_management?createDatabaseIfNotExist=true</jdbc-url>
+    </data-source>
+  </component>
+</project>

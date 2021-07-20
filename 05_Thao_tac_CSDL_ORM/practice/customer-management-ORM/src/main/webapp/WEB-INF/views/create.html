@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h2>Create Customer</h2>
+<p>
+    <a th:href="@{/customer}"> Back to List</a>
+</p>
+<div>
+    <form action="/customer/create" th:object="${customer}" method="post">
+        <p> Name</p>
+        <input th:field="*{name}">
+        <p>Date Of Birth</p>
+        <input  type="date" th:field="*{dateOfBirth}">
+        <p>Gender</p>
+        <input type="radio" th:field="*{gender}" value="0"> Female
+        <input type="radio" th:field="*{gender}" value="1"> Male
+        <p>Address</p>
+        <input th:field="*{address}">
+
+        <button type="submit"> Create </button>
+    </form>
+</div>
+
+</body>
+</html>

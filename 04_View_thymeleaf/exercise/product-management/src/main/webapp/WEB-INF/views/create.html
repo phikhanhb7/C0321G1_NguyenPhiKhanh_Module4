@@ -9,28 +9,92 @@
     </a>
 </p>
 <div id="form">
-    <form th:action="@{/product/create}" th:object="${product}"
-          method="POST" novalidate="novalidate">
-        <input type="hidden" th:field="*{id}"/>
+<!--    <form th:action="@{/product/create}" th:object="${product}"-->
+<!--          method="POST" novalidate="novalidate">-->
+<!--        <input type="hidden" th:field="*{id}"/>-->
+<!--        <div>-->
+<!--            <label>Name</label>-->
+<!--            <input type="text" th:field="*{name}"/>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <label>Price</label>-->
+<!--            <input type="text" th:field="*{price}"/>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <label>description</label>-->
+<!--            <input type="text" th:field="*{description}"/>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <label>manufacturer</label>-->
+<!--            <input type="text" th:field="*{manufacturer}"/>-->
+<!--        </div>-->
+<!--        <input type="submit" value="Save" onclick="onLoadData()"/>-->
+<!--    </form>-->
+    <form>
+        <input type="hidden" name="id"/>
         <div>
             <label>Name</label>
-            <input type="text" th:field="*{name}"/>
+            <input type="text" name="name"/>
         </div>
         <div>
             <label>Price</label>
-            <input type="text" th:field="*{price}"/>
+            <input type="text" name="price"/>
         </div>
         <div>
             <label>description</label>
-            <input type="text" th:field="*{description}"/>
+            <input type="text" name="description"/>
         </div>
         <div>
             <label>manufacturer</label>
-            <input type="text" th:field="*{manufacturer}"/>
+            <input type="text" name="manufacturer"/>
         </div>
-        <input type="submit" value="Save"/>
+        <input type="button" value="Save" onclick="addData()"/>
     </form>
 </div>
+<table id="view-date" ></table>
+<script>
+    const name = document.getElementsByName("name");
+     function onLoadData() {
+         let query = 'http://localhost:8080/api/product';
+         let request = new XMLHttpRequest();
+         request.open('GET', query);
+         request.onload = function () {
+             if (request.status === 200) {
+                 let response = JSON.parse(request.responseText);
+                 console.log(response);
+                 let result = '<tr><th>Name</th><th>Price</th></tr>';
+                 for (let i = 0; i < response.length ; i++) {
+                     const item = response[i];
+                     result += '<tr><th>' + item.name + '</th><th>' + item.price + '</th></tr>'
+                 }
+                 document.getElementById('view-date').innerHTML = result;
+             }
+             if (request.status === 404) {
+                 console.log("chet me roi");
+             }
+         };
+         request.send();
+    }
+
+     function addData() {
+         let query = 'http://localhost:8080/api/product/create';
+         let request = new XMLHttpRequest();
+         request.open('POST', query);
+         request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+         request.send(JSON.stringify({ "id": "1",
+             "name": name[0].value,
+             "price" : "1000" ,
+             "description" : "note",
+             "manufacturer" : "iphone"
+         }));
+         request.onload = function () {
+             if (request.status === 200) {
+                 onLoadData();
+             }
+         };
+     }
+
+</script>
 <footer th:replace="/layout :: footer"></footer>
 </body>
 </html>

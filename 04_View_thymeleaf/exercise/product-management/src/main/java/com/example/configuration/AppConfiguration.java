@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.thymeleaf.spring5.SpringTemplateEngine;
@@ -16,9 +17,15 @@ import org.thymeleaf.templatemode.TemplateMode;
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.example")
-public class AppConfiguration implements WebMvcConfigurer,  ApplicationContextAware {
+public class AppConfiguration implements WebMvcConfigurer, ApplicationContextAware {
 
     private ApplicationContext applicationContext;
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        registry.addMapping("/**")
+                .allowedMethods("*"); // http://localhost:63343/
+    }
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
