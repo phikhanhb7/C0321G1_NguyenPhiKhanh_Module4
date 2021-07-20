@@ -11,19 +11,19 @@
 <div id="detail">
     <div class="cusdetail">
         <label>Name:</label>
-        <label th:text="${product.getName()}"></label>
+        <label th:text="${product.name}"></label>
     </div>
     <div class="cusdetail">
         <label>Price:</label>
-        <label th:text="${product.getPrice()}"></label>
+        <label th:text="${product.price}"></label>
     </div>
     <div class="cusdetail">
         <label>Description:</label>
-        <label th:text="${product.getDescription()}"></label>
+        <label th:text="${product.description}"></label>
     </div>
     <div class="cusdetail">
         <label>Manufacturer:</label>
-        <label th:text="${product.getManufacturer()}"></label>
+        <label th:text="${product.manufacturer}"></label>
     </div>
 </div>
 <footer th:replace="/layout :: footer"></footer>
