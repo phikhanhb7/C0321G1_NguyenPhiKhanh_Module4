@@ -11,4 +11,6 @@ public interface IBlogService {
     void remove(Long id);
     Page<Blog> searchByName(String nameS, Pageable pageable);
     Page<Blog> findAllByOrderByDateDesc(Pageable pageable);
+
+    Page<Blog> findAllByCategory_Id(Long id,Pageable pageable);
 }

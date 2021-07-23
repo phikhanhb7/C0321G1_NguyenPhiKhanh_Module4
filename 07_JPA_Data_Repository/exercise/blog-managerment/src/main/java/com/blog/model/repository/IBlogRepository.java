@@ -17,6 +17,6 @@ public interface IBlogRepository extends JpaRepository<Blog ,Long> {
 
     Page<Blog> findAllByOrderByDateDesc(Pageable pageable);
 
-
+    Page<Blog> findAllByCategory_Id(Long id,Pageable pageable);
 
 }

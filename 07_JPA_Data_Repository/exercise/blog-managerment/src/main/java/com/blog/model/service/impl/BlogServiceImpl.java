@@ -50,6 +50,10 @@ public class BlogServiceImpl implements IBlogService {
         return blogRepository.findAllByOrderByDateDesc(pageable);
     }
 
+    @Override
+    public Page<Blog> findAllByCategory_Id(Long id, Pageable pageable) {
+        return blogRepository.findAllByCategory_Id(id,pageable);
+    }
 
 
 }

@@ -25,17 +25,22 @@ public class BlogController {
     private ICategoryService categoryService;
 
     @GetMapping({"/", "/search"})
-    public ModelAndView showListBlog(@RequestParam("nameS") Optional<String> nameS,
+    public ModelAndView showListBlog(@RequestParam(value = "nameS",required = false) Optional<String> nameS,
+                                     @RequestParam(value = "searchId",required = false) Long search,
                                      @PageableDefault(value = 3) Pageable pageable) {
         Page<Blog> blogList;
+
         ModelAndView modelAndView = new ModelAndView("/blog/list");
         if (nameS.isPresent()) {
             blogList = blogService.searchByName(nameS.get(), pageable);
             modelAndView.addObject("nameS", nameS.get());
-        } else {
+        } else if (search != null){
+            blogList = blogService.findAllByCategory_Id(search,pageable);
+        }else {
             blogList = blogService.findAllByOrderByDateDesc(pageable);
         }
         modelAndView.addObject("blogList", blogList);
+        modelAndView.addObject("categoryList", categoryService.findAllList());
 
         return modelAndView;
     }
