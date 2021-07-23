@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Customer</title>
+    <!--    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"-->
+    <!--          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">-->
+    <style>
+        span{
+            color: red ;
+        }
+    </style>
+</head>
+<body>
+
+<div >
+    <h1>Create Customer</h1>
+    <div>
+        <a href="/customers"><button> back to list</button></a>
+    </div>
+    <div style=" text-align: right">
+        <a href="/home">
+            <button>Back to home</button>
+        </a>
+    </div>
+
+    <th:block th:if="${mes}">
+        <p th:text="${mes}"></p>
+    </th:block>
+    <form th:action="@{/create-customer}" th:object="${customerDto}" method="post">
+        <table class="table table-bordered table-striped ">
+
+            <tr>
+                <td>customer Name:</td>
+                <td><input type="text" th:field="*{customerName}" placeholder="Enter name"/></td>
+                <td>
+                    <span th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Customer Code:</td>
+                <td><input type="text" th:field="*{customerCode}" placeholder="Enter Customer code"/></td>
+                <td>
+                    <span th:if="${#fields.hasErrors('customerCode')}" th:errors="*{customerCode}"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td> Customer Type :</td>
+                <td>
+                    <select th:field="*{customerType}">
+                        <option th:each="c : ${customerTypes}" th:value="${c.id}"
+                                th:text="${c.customerTypeName}"></option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr>
+                <td>customer Birthday:</td>
+                <td><input type="date" th:field="*{customerBirthDay}"/></td>
+                <td>
+                    <span th:if="${#fields.hasErrors('customerBirthDay')}" th:errors="*{customerBirthDay}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Customer Gender:</td>
+                <td>
+                    <select th:field="*{customerGender}">
+                        <option th:value="1" th:text="Male"></option>
+                        <option th:value="0" th:text="Female"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>customer ID card:</td>
+                <td><input type="number" th:field="*{customerIdCard}" placeholder="Enter customer id card"/></td>
+                <td>
+                    <span th:if="${#fields.hasErrors('customerIdCard')}" th:errors="*{customerIdCard}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>customer Phone:</td>
+                <td><input type="number" th:field="*{customerPhone}" placeholder="Enter customer phone"/></td>
+                <td>
+                    <span th:if="${#fields.hasErrors('customerPhone')}" th:errors="*{customerPhone}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>customer Email:</td>
+                <td><input type="email" th:field="*{customerEmail}" placeholder="Enter customer email"/></td>
+                <td>
+                    <span th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>customer Address :</td>
+                <td><input type="text" th:field="*{customerAddress}" placeholder="Enter customer address "/></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="submit" value="Create Customer"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
