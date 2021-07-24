@@ -17,15 +17,13 @@
         <th>Edit</th>
         <th>Delete</th>
     </tr>
-    <th:block th:each="c,status : ${categoryList}">
-        <tr>
-            <td th:text="${status.count}"></td>
-            <td th:text="${c.id}"></td>
-            <td th:text="${c.name}"></td>
-            <td ><a th:href="@{/category/edit(id=${c.id})}">Edit</a></td>
-            <td ><a th:href="@{/category/delete(id=${c.id})}">Delete</a></td>
-        </tr>
-    </th:block>
+    <tr th:each=" c,status: ${categoryList}">
+        <td th:text="${status.count}"></td>
+        <td th:text="${c.id}"></td>
+        <td ><a th:href="@{/category/view(id=${c.id})}" th:text="${c.name}"></a></td>
+        <td ><a th:href="@{/category/edit(id=${c.id})}">Edit</a></td>
+        <td ><a th:href="@{/category/delete(id=${c.id})}">Delete</a></td>
+    </tr>
 </table>
 <div>
     <a th:href="@{/category(page=${categoryList.number - 1})}" th:if="${categoryList.hasPrevious()}" >Previous</a>
