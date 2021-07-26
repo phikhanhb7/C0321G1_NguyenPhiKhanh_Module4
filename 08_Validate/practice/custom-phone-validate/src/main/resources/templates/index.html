@@ -1,10 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <style>
+        p {
+            color: red;
+        }
+
+    </style>
 </head>
 <body>
-$END$
+
+<div class="container">
+    <form  th:object="${phoneNumber}" class="well form-horizontal" action="/create" method="post">
+
+        <fieldset>
+            <!-- Form Name -->
+            <legend><center><h2><b>Create Phone </b></h2></center></legend><br>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label ">Phone</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                        <input  th:field="*{number}" placeholder="Phone" class="form-control"  type="text">
+                    </div>
+                    <p th:errors="*{number}"></p>
+                </div>
+            </div>
+
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            <button type="submit" class="btn btn-warning" ><span class="glyphicon glyphicon-send"></span>Submit</button>
+        </fieldset>
+    </form>
+</div>
+</div>
 </body>
 </html>

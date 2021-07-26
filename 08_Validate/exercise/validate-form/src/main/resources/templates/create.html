@@ -29,25 +29,47 @@
 
         <fieldset>
             <!-- Form Name -->
-            <legend><center><h2><b>Create User </b></h2></center></legend><br>
-
+            <legend><center><h2><b>Create Form <br> </b></h2></center></legend><br>
 
             <div class="form-group">
-                <label class="col-md-4 control-label ">Name</label>
+                <label class="col-md-4 control-label ">First Name : </label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input  th:field="*{name}" placeholder="Code" class="form-control"  type="text">
+                        <input  th:field="*{firstName}" placeholder="First Name" class="form-control"  type="text">
                     </div>
-                    <p th:errors="*{name}"></p>
+                    <p th:errors="*{firstName}"></p>
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-4 control-label ">Age</label>
+                <label class="col-md-4 control-label ">Last Name :</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input  th:field="*{age}" placeholder="age" class="form-control"  type="text">
+                        <input  th:field="*{lastName}" placeholder="Last Name" class="form-control"  type="text">
+                    </div>
+                    <p th:errors="*{lastName}"></p>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Number Phone </label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+                        <input  th:field="*{numberPhone}" placeholder="PhoneNumber" class="form-control"  type="text">
+                    </div>
+                    <p th:errors="*{numberPhone}"></p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Age</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input th:field="*{age}"  class="form-control" type="number">
                     </div>
                     <p th:errors="*{age}"></p>
                 </div>
