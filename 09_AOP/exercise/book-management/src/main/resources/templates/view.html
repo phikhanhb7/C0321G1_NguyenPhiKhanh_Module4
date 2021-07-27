@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>View</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+</head>
+<body>
+<h2>Book Information </h2>
+
+<div>
+    <a href="/"> Back to List book</a>
+</div>
+<form th:object="${book}">
+    <table class="table table-bordered table-striped ">
+        <tr>
+            <th>Tên sách :</th>
+            <td th:text="${book.name}"></td>
+        </tr>
+
+        <tr>
+            <th>Số lượng hiện tại :</th>
+            <td th:text="${book.quantity}"></td>
+        </tr>
+
+        <tr>
+            <th>Tác giả :</th>
+            <td th:text="${book.author}"></td>
+        </tr>
+        <tr>
+            <th>Ngày xuất bản :</th>
+            <td th:text="${book.publicationDate}"></td>
+        </tr>
+
+    </table>
+    <tr>
+        <td>
+            <button><a th:href="@{/borrow(id=${book.id})}"><label>Borrow</label></a></button>
+        </td>
+    </tr>
+</form>
+</body>
+</html>

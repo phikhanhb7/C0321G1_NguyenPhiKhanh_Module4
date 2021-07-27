@@ -1,0 +1,56 @@
+2021-07-27 20:17:28.892  INFO 9176 --- [main] com.example.BookManagementApplication    : Starting BookManagementApplication using Java 1.8.0_251 on TECHCARE with PID 9176 (D:\Module 4\C0321G1_NguyenPhiKhanh_Module4\09_AOP\exercise\book-management\build\classes\java\main started by Admin in D:\Module 4\C0321G1_NguyenPhiKhanh_Module4\09_AOP\exercise\book-management)
+2021-07-27 20:17:28.896  INFO 9176 --- [main] com.example.BookManagementApplication    : No active profile set, falling back to default profiles: default
+2021-07-27 20:17:29.664  INFO 9176 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-07-27 20:17:29.723  INFO 9176 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 49 ms. Found 1 JPA repository interfaces.
+2021-07-27 20:17:30.724  INFO 9176 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-07-27 20:17:30.751  INFO 9176 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-07-27 20:17:30.753  INFO 9176 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-07-27 20:17:31.021  INFO 9176 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-07-27 20:17:31.021  INFO 9176 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2077 ms
+2021-07-27 20:17:31.289  INFO 9176 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-07-27 20:17:31.331  INFO 9176 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-07-27 20:17:31.557  INFO 9176 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-07-27 20:17:31.647  INFO 9176 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-07-27 20:17:32.104  INFO 9176 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-07-27 20:17:32.126  INFO 9176 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-07-27 20:17:32.794  INFO 9176 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-07-27 20:17:32.805  INFO 9176 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-07-27 20:17:33.171  WARN 9176 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-07-27 20:17:33.755  INFO 9176 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-07-27 20:17:33.766  INFO 9176 --- [main] com.example.BookManagementApplication    : Started BookManagementApplication in 5.337 seconds (JVM running for 6.032)
+2021-07-27 20:17:49.426  INFO 9176 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-07-27 20:17:49.427  INFO 9176 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-07-27 20:17:49.429  INFO 9176 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2021-07-27 20:17:49.891 ERROR 9176 --- [http-nio-8080-exec-1] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 20:17:49.892 ERROR 9176 --- [http-nio-8080-exec-1] com.example.aop.Loggers                  : methodNameshowListBook
+2021-07-27 20:17:49.892 ERROR 9176 --- [http-nio-8080-exec-1] com.example.aop.Loggers                  : args[{books=[com.example.model.entity.Book@5ccd9f09, com.example.model.entity.Book@7ea875ef, com.example.model.entity.Book@68796b7b, com.example.model.entity.Book@2cdfae33, com.example.model.entity.Book@40cef8c9, com.example.model.entity.Book@7d74ea32]}]
+2021-07-27 20:17:52.647 ERROR 9176 --- [http-nio-8080-exec-3] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 20:17:52.647 ERROR 9176 --- [http-nio-8080-exec-3] com.example.aop.Loggers                  : methodNameshowView
+2021-07-27 20:17:52.647 ERROR 9176 --- [http-nio-8080-exec-3] com.example.aop.Loggers                  : args[1, {book=com.example.model.entity.Book@48361b9e}]
+2021-07-27 20:17:53.886 ERROR 9176 --- [http-nio-8080-exec-2] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 20:17:53.886 ERROR 9176 --- [http-nio-8080-exec-2] com.example.aop.Loggers                  : methodNamegetBorrow
+2021-07-27 20:17:53.886 ERROR 9176 --- [http-nio-8080-exec-2] com.example.aop.Loggers                  : args[1, {books=[com.example.model.entity.Book@4f8e66aa, com.example.model.entity.Book@5c7adea3, com.example.model.entity.Book@32446ab8, com.example.model.entity.Book@608b372c, com.example.model.entity.Book@18e829bd, com.example.model.entity.Book@126d63c5]}]
+2021-07-27 20:17:56.177 ERROR 9176 --- [http-nio-8080-exec-6] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 20:17:56.177 ERROR 9176 --- [http-nio-8080-exec-6] com.example.aop.Loggers                  : methodNamegoPay
+2021-07-27 20:17:56.177 ERROR 9176 --- [http-nio-8080-exec-6] com.example.aop.Loggers                  : args[]
+2021-07-27 20:17:58.404 ERROR 9176 --- [http-nio-8080-exec-5] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 20:17:58.406 ERROR 9176 --- [http-nio-8080-exec-5] com.example.aop.Loggers                  : methodNamepayBook
+2021-07-27 20:17:58.407 ERROR 9176 --- [http-nio-8080-exec-5] com.example.aop.Loggers                  : args[1, {books=[com.example.model.entity.Book@3dba706b, com.example.model.entity.Book@2633ba2f, com.example.model.entity.Book@56119f8b, com.example.model.entity.Book@6fa31a4d, com.example.model.entity.Book@547a2754, com.example.model.entity.Book@1434395e]}]
+2021-07-27 20:25:27.989 ERROR 9176 --- [http-nio-8080-exec-8] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 20:25:27.989 ERROR 9176 --- [http-nio-8080-exec-8] com.example.aop.Loggers                  : methodNameshowView
+2021-07-27 20:25:27.989 ERROR 9176 --- [http-nio-8080-exec-8] com.example.aop.Loggers                  : args[2, {book=com.example.model.entity.Book@2575bcd4}]
+2021-07-27 20:25:29.639 ERROR 9176 --- [http-nio-8080-exec-9] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 20:25:29.640 ERROR 9176 --- [http-nio-8080-exec-9] com.example.aop.Loggers                  : methodNamegetBorrow
+2021-07-27 20:25:29.640 ERROR 9176 --- [http-nio-8080-exec-9] com.example.aop.Loggers                  : args[2, {books=[com.example.model.entity.Book@1712e6ed, com.example.model.entity.Book@531db9b9, com.example.model.entity.Book@172f1137, com.example.model.entity.Book@6c984174, com.example.model.entity.Book@5594ac1f, com.example.model.entity.Book@55b10dce]}]
+2021-07-27 20:25:33.084 ERROR 9176 --- [http-nio-8080-exec-10] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 20:25:33.085 ERROR 9176 --- [http-nio-8080-exec-10] com.example.aop.Loggers                  : methodNamegoPay
+2021-07-27 20:25:33.085 ERROR 9176 --- [http-nio-8080-exec-10] com.example.aop.Loggers                  : args[]
+2021-07-27 20:25:35.483 ERROR 9176 --- [http-nio-8080-exec-1] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 20:25:35.483 ERROR 9176 --- [http-nio-8080-exec-1] com.example.aop.Loggers                  : methodNamepayBook
+2021-07-27 20:25:35.483 ERROR 9176 --- [http-nio-8080-exec-1] com.example.aop.Loggers                  : args[1, {books=[com.example.model.entity.Book@1180546f, com.example.model.entity.Book@16982b05, com.example.model.entity.Book@1259ca9b, com.example.model.entity.Book@20990330, com.example.model.entity.Book@74906b23, com.example.model.entity.Book@2307a6b7]}]
+2021-07-27 20:25:37.318 ERROR 9176 --- [http-nio-8080-exec-2] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 20:25:37.319 ERROR 9176 --- [http-nio-8080-exec-2] com.example.aop.Loggers                  : methodNamegoPay
+2021-07-27 20:25:37.319 ERROR 9176 --- [http-nio-8080-exec-2] com.example.aop.Loggers                  : args[]
+2021-07-27 20:25:39.592 ERROR 9176 --- [http-nio-8080-exec-4] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 20:25:39.592 ERROR 9176 --- [http-nio-8080-exec-4] com.example.aop.Loggers                  : methodNamepayBook
+2021-07-27 20:25:39.592 ERROR 9176 --- [http-nio-8080-exec-4] com.example.aop.Loggers                  : args[1, {books=[com.example.model.entity.Book@15c99f39, com.example.model.entity.Book@e2ed4d4, com.example.model.entity.Book@6f6228bf, com.example.model.entity.Book@7cb6338c, com.example.model.entity.Book@5f2e1bce, com.example.model.entity.Book@27deec8b]}]
