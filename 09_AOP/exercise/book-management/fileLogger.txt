@@ -54,3 +54,90 @@
 2021-07-27 20:25:39.592 ERROR 9176 --- [http-nio-8080-exec-4] com.example.aop.Loggers                  : classNameBookController
 2021-07-27 20:25:39.592 ERROR 9176 --- [http-nio-8080-exec-4] com.example.aop.Loggers                  : methodNamepayBook
 2021-07-27 20:25:39.592 ERROR 9176 --- [http-nio-8080-exec-4] com.example.aop.Loggers                  : args[1, {books=[com.example.model.entity.Book@15c99f39, com.example.model.entity.Book@e2ed4d4, com.example.model.entity.Book@6f6228bf, com.example.model.entity.Book@7cb6338c, com.example.model.entity.Book@5f2e1bce, com.example.model.entity.Book@27deec8b]}]
+2021-07-27 21:15:44.522 ERROR 9176 --- [http-nio-8080-exec-5] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 21:15:44.523 ERROR 9176 --- [http-nio-8080-exec-5] com.example.aop.Loggers                  : methodNameshowView
+2021-07-27 21:15:44.523 ERROR 9176 --- [http-nio-8080-exec-5] com.example.aop.Loggers                  : args[2, {book=com.example.model.entity.Book@6f81f85a}]
+2021-07-27 21:15:47.355 ERROR 9176 --- [http-nio-8080-exec-7] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 21:15:47.355 ERROR 9176 --- [http-nio-8080-exec-7] com.example.aop.Loggers                  : methodNamegetBorrow
+2021-07-27 21:15:47.356 ERROR 9176 --- [http-nio-8080-exec-7] com.example.aop.Loggers                  : args[2, {books=[com.example.model.entity.Book@2cea38a2, com.example.model.entity.Book@1b715cb4, com.example.model.entity.Book@7c47ce8, com.example.model.entity.Book@67a53409, com.example.model.entity.Book@da776cf, com.example.model.entity.Book@707570f1]}]
+2021-07-27 21:15:49.031 ERROR 9176 --- [http-nio-8080-exec-8] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 21:15:49.031 ERROR 9176 --- [http-nio-8080-exec-8] com.example.aop.Loggers                  : methodNameshowView
+2021-07-27 21:15:49.031 ERROR 9176 --- [http-nio-8080-exec-8] com.example.aop.Loggers                  : args[2, {book=com.example.model.entity.Book@5946c3a1}]
+2021-07-27 21:15:50.017 ERROR 9176 --- [http-nio-8080-exec-9] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 21:15:50.017 ERROR 9176 --- [http-nio-8080-exec-9] com.example.aop.Loggers                  : methodNameshowErrorPage
+2021-07-27 21:15:50.017 ERROR 9176 --- [http-nio-8080-exec-9] com.example.aop.Loggers                  : args[]
+2021-07-27 21:15:53.639 ERROR 9176 --- [http-nio-8080-exec-10] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 21:15:53.641 ERROR 9176 --- [http-nio-8080-exec-10] com.example.aop.Loggers                  : methodNameshowListBook
+2021-07-27 21:15:53.641 ERROR 9176 --- [http-nio-8080-exec-10] com.example.aop.Loggers                  : args[{books=[com.example.model.entity.Book@6f0e26ec, com.example.model.entity.Book@5bde0df9, com.example.model.entity.Book@62580c6b, com.example.model.entity.Book@6a2dbad4, com.example.model.entity.Book@740ac83b, com.example.model.entity.Book@5f90b286]}]
+2021-07-27 21:16:14.257 ERROR 9176 --- [http-nio-8080-exec-1] com.example.aop.Loggers                  : classNameBookController
+2021-07-27 21:16:14.257 ERROR 9176 --- [http-nio-8080-exec-1] com.example.aop.Loggers                  : methodNamegoPay
+2021-07-27 21:16:14.257 ERROR 9176 --- [http-nio-8080-exec-1] com.example.aop.Loggers                  : args[]
+2021-07-27 21:40:42.455  INFO 9860 --- [main] com.example.BookManagementApplication    : Starting BookManagementApplication using Java 1.8.0_251 on TECHCARE with PID 9860 (D:\Module 4\C0321G1_NguyenPhiKhanh_Module4\09_AOP\exercise\book-management\build\classes\java\main started by Admin in D:\Module 4\C0321G1_NguyenPhiKhanh_Module4\09_AOP\exercise\book-management)
+2021-07-27 21:40:42.458  INFO 9860 --- [main] com.example.BookManagementApplication    : No active profile set, falling back to default profiles: default
+2021-07-27 21:40:43.227  INFO 9860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-07-27 21:40:43.287  INFO 9860 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 51 ms. Found 1 JPA repository interfaces.
+2021-07-27 21:40:43.882  INFO 9860 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-07-27 21:40:43.892  INFO 9860 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-07-27 21:40:43.893  INFO 9860 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-07-27 21:40:44.017  INFO 9860 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-07-27 21:40:44.017  INFO 9860 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1504 ms
+2021-07-27 21:40:44.157  INFO 9860 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-07-27 21:40:44.203  INFO 9860 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-07-27 21:40:44.413  INFO 9860 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-07-27 21:40:44.508  INFO 9860 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-07-27 21:40:44.975  INFO 9860 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-07-27 21:40:44.998  INFO 9860 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-07-27 21:40:45.716  INFO 9860 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-07-27 21:40:45.729  INFO 9860 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-07-27 21:40:46.087  WARN 9860 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-07-27 21:40:46.580  INFO 9860 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-07-27 21:40:46.593  INFO 9860 --- [main] com.example.BookManagementApplication    : Started BookManagementApplication in 4.617 seconds (JVM running for 6.48)
+2021-07-27 21:41:04.200  INFO 9860 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-07-27 21:41:04.200  INFO 9860 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-07-27 21:41:04.202  INFO 9860 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2021-07-27 21:42:24.818  INFO 7304 --- [main] com.example.BookManagementApplication    : Starting BookManagementApplication using Java 1.8.0_251 on TECHCARE with PID 7304 (D:\Module 4\C0321G1_NguyenPhiKhanh_Module4\09_AOP\exercise\book-management\build\classes\java\main started by Admin in D:\Module 4\C0321G1_NguyenPhiKhanh_Module4\09_AOP\exercise\book-management)
+2021-07-27 21:42:24.821  INFO 7304 --- [main] com.example.BookManagementApplication    : No active profile set, falling back to default profiles: default
+2021-07-27 21:42:25.649  INFO 7304 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-07-27 21:42:25.713  INFO 7304 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 52 ms. Found 1 JPA repository interfaces.
+2021-07-27 21:42:26.291  INFO 7304 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-07-27 21:42:26.301  INFO 7304 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-07-27 21:42:26.302  INFO 7304 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-07-27 21:42:26.422  INFO 7304 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-07-27 21:42:26.422  INFO 7304 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1540 ms
+2021-07-27 21:42:26.610  INFO 7304 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-07-27 21:42:26.696  INFO 7304 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-07-27 21:42:27.083  INFO 7304 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-07-27 21:42:27.183  INFO 7304 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-07-27 21:42:27.638  INFO 7304 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-07-27 21:42:27.658  INFO 7304 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-07-27 21:42:28.312  INFO 7304 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-07-27 21:42:28.321  INFO 7304 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-07-27 21:42:28.694  WARN 7304 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-07-27 21:42:29.082  INFO 7304 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-07-27 21:42:29.092  INFO 7304 --- [main] com.example.BookManagementApplication    : Started BookManagementApplication in 4.735 seconds (JVM running for 5.449)
+2021-07-27 21:42:39.272  INFO 7304 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-07-27 21:42:39.273  INFO 7304 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-07-27 21:42:39.274  INFO 7304 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2021-07-27 21:43:44.598  INFO 8652 --- [main] com.example.BookManagementApplication    : Starting BookManagementApplication using Java 1.8.0_251 on TECHCARE with PID 8652 (D:\Module 4\C0321G1_NguyenPhiKhanh_Module4\09_AOP\exercise\book-management\build\classes\java\main started by Admin in D:\Module 4\C0321G1_NguyenPhiKhanh_Module4\09_AOP\exercise\book-management)
+2021-07-27 21:43:44.601  INFO 8652 --- [main] com.example.BookManagementApplication    : No active profile set, falling back to default profiles: default
+2021-07-27 21:43:45.435  INFO 8652 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2021-07-27 21:43:45.497  INFO 8652 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 53 ms. Found 1 JPA repository interfaces.
+2021-07-27 21:43:46.065  INFO 8652 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2021-07-27 21:43:46.074  INFO 8652 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-07-27 21:43:46.075  INFO 8652 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.50]
+2021-07-27 21:43:46.196  INFO 8652 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-07-27 21:43:46.197  INFO 8652 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1522 ms
+2021-07-27 21:43:46.342  INFO 8652 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2021-07-27 21:43:46.387  INFO 8652 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.4.32.Final
+2021-07-27 21:43:46.586  INFO 8652 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2021-07-27 21:43:46.676  INFO 8652 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-07-27 21:43:47.105  INFO 8652 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-07-27 21:43:47.126  INFO 8652 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2021-07-27 21:43:47.771  INFO 8652 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2021-07-27 21:43:47.780  INFO 8652 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2021-07-27 21:43:48.125  WARN 8652 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2021-07-27 21:43:48.516  INFO 8652 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2021-07-27 21:43:48.526  INFO 8652 --- [main] com.example.BookManagementApplication    : Started BookManagementApplication in 4.402 seconds (JVM running for 5.075)
+2021-07-27 21:43:52.963  INFO 8652 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-07-27 21:43:52.963  INFO 8652 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-07-27 21:43:52.964  INFO 8652 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
