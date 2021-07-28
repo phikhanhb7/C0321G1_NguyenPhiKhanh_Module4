@@ -30,13 +30,13 @@ public class ProductController {
 
     @GetMapping("/add/{id}")
     public String addToCart(@PathVariable Long id, @SessionAttribute Cart cart, Model model) {
-        Product productOptional = productService.findById(id);
-        if (productOptional == null) {
+        Product product = productService.findById(id);
+        if (product == null) {
             return "/error";
         }
-        cart.addProduct(productOptional);
-        model.addAttribute("msg", "Đã thêm sản phẩm vào giỏ hàng!!!");
-        model.addAttribute("product", productOptional);
+        cart.addProduct(product);
+        model.addAttribute("msg", "Đã thêm sản phẩm  vào giỏ hàng!!!");
+        model.addAttribute("product", product);
         return "/view";
     }
 

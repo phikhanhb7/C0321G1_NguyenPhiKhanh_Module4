@@ -27,7 +27,7 @@ public class Cart {
         }
         return false;
     }
-// lấy tất cả sản phẩm hiện có và số lượng trong giỏ
+// lấy  sản phẩm hiện có và số lượng trong giỏ
     private Map.Entry<Product, Integer> selectItemInCart(Product product){
         for (Map.Entry<Product, Integer> entry : products.entrySet()) {
             if(entry.getKey().getId().equals(product.getId())){
