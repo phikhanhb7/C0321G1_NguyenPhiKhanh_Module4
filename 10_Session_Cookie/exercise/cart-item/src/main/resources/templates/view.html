@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <script src="/jquery/jquery-3.6.0.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="mb-3 mx-3">
+  <h3 style="color: #ffc800">Show product information</h3>
+  <div class="row">
+    <a href="/shop" class="btn btn-info mr-2">Back to list</a>
+    <a href="/cart" class="btn btn-success">Your cart</a>
+  </div>
+</div>
+<p class="text-primary" th:text="${msg}"></p>
+<div class="row mx-auto">
+  <div class="col-3">
+    <div class="card border-dark">
+      <img th:src="@{'/img/img'+ ${product.id}+ '.jpg'}" class="card-img-top border-bottom border-dark" height="250px"/>
+      <div class="card-body text-center">
+        <p class="h5 border-bottom  border-dark" th:text="'Mã Sp: '+${product.id} "></p>
+        <p class="text-danger h5" th:text="'Giá: '+ ${product.price} + ' đ'"></p>
+        <a class="btn btn-warning text-white" th:href="@{/add/__${product.id}__}" th:text="Mua"></a>
+      </div>
+    </div>
+  </div>
+  <div class="col-4">
+    <p class="h3 border-bottom" th:text="${product.name}"></p>
+    <p class="h3 border-bottom" th:text="${product.description}"></p>
+  </div>
+</div>
+</body>
+</html>

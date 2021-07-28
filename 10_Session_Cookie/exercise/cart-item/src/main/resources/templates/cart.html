@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <script src="/jquery/jquery-3.6.0.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+<p>
+  <a href="/shop" class="btn btn-info">Shop</a>
+</p>
+<div class="container-fluid">
+  <p class="h3 border-bottom " th:text="'Giỏ hàng('+ ${cart.products.size()}+')'"></p>
+  <th:block th:each="product:${cart.products}">
+    <div class="row border-bottom " >
+      <div class="col-2">
+        <div class="card">
+          <img th:src="@{'/img/img'+ ${product.getKey().id}+ '.jpg'}" class="card-img" width="50px"
+               height="70px"/>
+          <div class="card-img-overlay m-0">
+            <a class="card-title h6 btn btn-primary" th:href="@{/delete/__${product.getKey().id}__}">
+              <span class="text-white" aria-hidden="true">X</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="col-6">
+        <table border="1">
+          <tr>
+            <td class="text-danger h5" th:text="${product.getKey().name}"></td>
+          </tr>
+          <tr>
+            <td class="h5">Mã sản phẩm:</td>
+            <td class="text-success" th:text="${product.getKey().id}"></td>
+          </tr>
+          <tr>
+            <td>Đơn giá:</td>
+            <td class="h5" th:text="${product.getKey().price}"></td>
+          </tr>
+          <tr>
+            <td>Số lượng:</td>
+            <td>
+
+              <a class="h4" th:href="@{/change/__${product.getKey().id}__(action='-')}"
+                 th:text="${'-'}"></a>
+
+              <span th:text="${product.getValue()}"></span>
+
+              <a class="h4" th:href="@{/change/__${product.getKey().id}__(action='+')}"
+                 th:text="${'+'}"></a>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </th:block>
+  <div class="row">
+    <div class="col-2"></div>
+    <div class="col-6">
+      <p class="ml-3 h4 text-danger" th:text="'Total money:'+ ${cart.countTotalPayment()}"></p>
+    </div>
+  </div>
+</div>
+
+
+</body>
+</html>

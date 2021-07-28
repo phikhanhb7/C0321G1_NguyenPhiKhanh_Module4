@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Shop</title>
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <script src="/jquery/jquery-3.6.0.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+</head>
+<body>
+<p>
+  <a href="/cart" class="btn btn-success">Your cart</a>
+</p>
+<div class="row">
+  <th:block th:each="product:${products}">
+    <div class="col-12 col-md-6 col-lg-3">
+      <div class="card">
+        <img th:src="@{'/img/img'+ ${product.id}+ '.jpg'}" class="card-img-top border" height="250px"/>
+        <div class="card-body text-center">
+          <a class="h6" th:href="@{/view/__${product.id}__}" th:text="${product.name}"></a>
+          <p class="text-danger h5" th:text="${product.price} + ' đ'"></p>
+        </div>
+      </div>
+    </div>
+  </th:block>
+</div>
+<!--<p>-->
+<!--  <a href="/shopping-cart">Your cart</a>-->
+<!--</p>-->
+<!--<table border="1">-->
+<!--  <tr>-->
+<!--    <td>Name</td>-->
+<!--    <td>Price</td>-->
+<!--    <td>Add To Cart</td>-->
+<!--  </tr>-->
+<!--  <th:block th:each="product:${products}">-->
+<!--    <tr>-->
+<!--      <td th:text="${product.name}"></td>-->
+<!--      <td th:text="${product.price}"></td>-->
+<!--      <td><a th:href="@{/add/__${product.id}__(action='list')}">Add To Cart</a></td>-->
+<!--    </tr>-->
+<!--  </th:block>-->
+<!--</table>-->
+</body>
+</html>
