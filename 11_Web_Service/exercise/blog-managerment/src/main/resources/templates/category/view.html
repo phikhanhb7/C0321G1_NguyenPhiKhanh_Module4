@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p>
+    <a href="/category">Back to category list</a>
+</p>
+<table border="1">
+    <tr>
+        <th>No</th>
+        <th>Id</th>
+        <th>Author</th>
+        <th>Content</th>
+        <th>Date</th>
+    </tr>
+    <th:block th:each="b,status : ${blogList}">
+        <tr>
+            <td th:text="${status.count}"></td>
+            <td th:text="${b.id}"></td>
+            <td th:text="${b.author}"></td>
+            <td th:text="${b.content}"></td>
+            <td th:text="${b.date}"></td>
+        </tr>
+    </th:block>
+</table>
+<div>
+    <a th:href="@{/(page=${blogList.number - 1})}" th:if="${blogList.hasPrevious()}" >Previous</a>
+    <span th:text="${blogList.number + 1}"></span>/ <span th:text="${blogList.totalPages}"></span>
+    <a th:href="@{/(page=${blogList.number + 1})}" th:if="${blogList.hasNext()}">Next</a>
+</div>
+</body>
+</html>
