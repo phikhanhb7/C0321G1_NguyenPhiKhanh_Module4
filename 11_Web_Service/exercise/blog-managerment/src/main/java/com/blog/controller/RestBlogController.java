@@ -51,7 +51,7 @@ public class RestBlogController {
     public ResponseEntity<List<Blog>> getCategoryOfBlog(@PathVariable Long id){
         List<Blog> blogs= blogService.findListBlogByCategory_Id(id);
         if (blogs.isEmpty()){
-            return  new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return  new ResponseEntity<>(HttpStatus.NOT_FOUND);
 
         }
         return  new ResponseEntity<>(blogs,HttpStatus.OK);
@@ -62,7 +62,7 @@ public class RestBlogController {
     public ResponseEntity<Blog> getInfoBlog(@PathVariable Long id){
         Blog blog=this.blogService.findById(id);
         if (blog==null){
-            return new  ResponseEntity<>(HttpStatus.NO_CONTENT);
+            return new  ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(blog,HttpStatus.OK);
     }
