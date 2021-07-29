@@ -43,11 +43,11 @@ public class ProductController {
     @GetMapping("/view/{id}")
     public String viewProduct(@PathVariable Long id,
                               Model model) {
-        Product productOptional = productService.findById(id);
-        if (productOptional == null) {
+        Product product = productService.findById(id);
+        if (product == null) {
             return "/error";
         }
-        model.addAttribute("product", productOptional);
+        model.addAttribute("product", product);
         return "/view";
     }
 
