@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{dashboard.title}"></title>
+</head>
+<body>
+Language: <a href="?lang=en">English</a> | <a href="?lang=haw">Hawaii</a>
+<h1 th:text="#{dashboard.heading}"></h1>
+<span th:text="#{dashboard.greeting}"></span> <span th:text="${user.userName}"></span>
+<p th:text="'your user: ' + ${user.password}"></p>
+<p th:text="'password: ' + ${user.password}"></p>
+</body>
+</html>
