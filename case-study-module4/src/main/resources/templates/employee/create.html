@@ -10,15 +10,14 @@
             color: red;
         }
 
-        footer {
-            position: fixed;
-            bottom: 0px;
-            left: 0px;
-            right: 0px;
-            margin-bottom: 0px;
+        footer{
+            position:fixed;
+            bottom:0px;
+            left:0px;
+            right:0px;
+            margin-bottom:0px;
         }
-
-        hr {
+        hr{
             color: #00cccc;
         }
     </style>
@@ -26,19 +25,12 @@
 <body>
 
 <div class="container">
-    <form th:object="${customerDto}" class="well form-horizontal" action="/customers/edit-customer" method="post">
-        <a href="/customers">
-            <button type="button" class="btn btn-warning"><span class="glyphicon glyphicon-chevron-left"></span> Back to
-                list
-            </button>
-        </a>
+    <form  th:object="${customerDto}" class="well form-horizontal" action="/customers/create-customer" method="post">
+        <a href="/customers"><button type="button" class="btn btn-warning" ><span class="glyphicon glyphicon-chevron-left"></span> Back to list</button></a>
 
         <fieldset>
             <!-- Form Name -->
-            <legend>
-                <center><h2><b>Edit Form <br> <span th:text="${mes}"></span> </b></h2></center>
-            </legend>
-            <br>
+            <legend><center><h2><b>Create Form <br> <span th:text="${mes}" style="color: blue"></span> </b></h2></center></legend><br>
 
             <div class="form-group">
                 <label class="col-md-4 control-label">Customer Type</label>
@@ -55,13 +47,13 @@
                     <p th:errors="*{customerType}"></p>
                 </div>
             </div>
-            <input th:field="*{id}" hidden>
+
             <div class="form-group">
                 <label class="col-md-4 control-label ">Code</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input th:field="*{customerCode}" placeholder="Code" class="form-control" type="text">
+                        <input  th:field="*{customerCode}" placeholder="Code" class="form-control"  type="text">
                     </div>
                     <p th:errors="*{customerCode}"></p>
                 </div>
@@ -71,7 +63,7 @@
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input th:field="*{customerName}" placeholder="Name" class="form-control" type="text">
+                        <input  th:field="*{customerName}" placeholder="Name" class="form-control"  type="text">
                     </div>
                     <p th:errors="*{customerName}"></p>
                 </div>
@@ -83,7 +75,7 @@
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input th:field="*{customerBirthDay}" placeholder="Birthday" class="form-control" type="date">
+                        <input  th:field="*{customerBirthDay}" placeholder="Birthday" class="form-control"  type="date">
                     </div>
                     <p th:errors="*{customerBirthDay}"></p>
                 </div>
@@ -94,7 +86,7 @@
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input th:field="*{customerIdCard}" class="form-control" type="number">
+                        <input th:field="*{customerIdCard}"  class="form-control" type="number">
                     </div>
                     <p th:errors="*{customerIdCard}"></p>
                 </div>
@@ -134,8 +126,7 @@
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                        <input th:field="*{customerEmail}" placeholder="E-Mail Address" class="form-control"
-                               type="email">
+                        <input th:field="*{customerEmail}" placeholder="E-Mail Address" class="form-control"  type="email">
                     </div>
                     <p th:errors="*{customerEmail}"></p>
                 </div>
@@ -146,14 +137,14 @@
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                        <input th:field="*{customerAddress}" placeholder="Address" class="form-control" type="text">
+                        <input  th:field="*{customerAddress}" placeholder="Address" class="form-control"  type="text">
                     </div>
                     <p th:errors="*{customerAddress}"></p>
                 </div>
             </div>
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            <button type="submit" class="btn btn-warning"><span class="glyphicon glyphicon-send"></span>Submit</button>
+            <button type="submit" class="btn btn-warning" ><span class="glyphicon glyphicon-send"></span>Submit</button>
         </fieldset>
     </form>
 </div>
