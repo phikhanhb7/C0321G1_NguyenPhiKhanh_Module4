@@ -10,7 +10,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
 
-    @Query(value = "select * from customer where  customer_name like %?1% and flag=0  and customer_birth_day like %?2% and customer_id_card like %?3% ",
+    @Query(value = "select * from customer where concat(customer_name,customer_birth_day,customer_id_card) like %?1% and flag =0",
             nativeQuery = true)
-    Page<Customer> findByCustomerNameContaining(String name, String birthday, String idCard, Pageable pageable);
+    Page<Customer> findByCustomerNameContaining(String name , Pageable pageable);
 }
+
+//    customer_name like %?1% and flag=0  and customer_birth_day like %?2% and customer_id_card like %?3%

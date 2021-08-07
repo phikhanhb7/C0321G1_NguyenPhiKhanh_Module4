@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layuot :: head}">
+
+</head>
+
+
+<body>
+
+<div th:replace="~{layuot :: hearder}">
+</div>
+<div style="background: azure">
+
+    <div style=" text-align: right">
+        <a href="/home">
+            <button type="button" class="btn btn-warning">Back to home</button>
+        </a>
+    </div>
+    <h1 style="color: blue; text-align: center;">Customer Using Service</h1>
+
+    <th:block th:if="${mes}">
+        <p th:text="${mes}"></p>
+    </th:block>
+    <form class="d-flex justify-content-end">
+        <input class="form-control" type="search" placeholder="Search name" aria-label="Search"
+               name="search">
+        <button class="btn btn-primary  my-sm-0" type="submit">Search</button>
+    </form>
+</div>
+
+
+<table class="table table-bordered table-striped ">
+    <tr>
+        <td>#</td>
+        <td>contract ID</td>
+        <td>Customer Name</td>
+        <td>Start  Day</td>
+        <td>Total Money</td>
+        <td>End Day</td>
+        <td>Service</td>
+        <td>Attach service</td>
+
+
+    </tr>
+
+    <th:block th:each="customerUsing,state : ${customerUsingList}">
+        <tr>
+
+            <td th:text="${state.count}"></td>
+            <td th:text="${customerUsing.id}"></td>
+            <td th:text="${customerUsing.customer.customerName}"></td>
+            <td th:text="${customerUsing.contractStartDay}"></td>
+            <td th:text="${customerUsing.contractTotal}"></td>
+            <td th:text="${customerUsing.contractEndDay}"></td>
+            <td th:text="${customerUsing.service.serviceName}"></td>
+
+            <td>
+                <ul class="nav nav-pills">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-dark" data-toggle="dropdown" role="button"
+                           aria-haspopup="true" aria-expanded="false">
+                        <span th:each="con : ${contractDetailList}"
+                              th:text="${con.contract.id == customerUsing.id ? con.attachService.attachServiceName + ' - ' : ''}">
+                        </span>
+                        </a>
+                        <div class="dropdown-menu">
+                        <span class="dropdown-item" th:each="con : ${contractDetailList}"
+                              th:text="${con.contract.id == customerUsing.id ?
+                              (con.attachService.attachServiceName + ' - Số lượng: ' + con.quantity) : ''}">
+                        </span>
+                        </div>
+                    </li>
+                </ul>
+
+            </td>
+
+        </tr>
+    </th:block>
+</table>
+
+
+<!--#region phân trang-->
+<div>
+    <a class="btn btn-outline-success" th:href="@{'/customerUsings'(page=${customerUsingList.number - 1},nameValue =${search})}"
+       th:if="${customerUsingList.hasPrevious()}">Previous</a>
+    <span th:each="p : ${#numbers.sequence(0,customerUsingList.totalPages - 1) }" th:if="${customerUsingList.hasContent()}">
+          <a class="btn btn-outline-success" th:href="@{'/customerUsings'(page=${p},nameValue =${search})}"
+             th:text="${p+1}"
+             th:if="${(p>(customerUsingList.number)-1)&&(p<(customerUsingList.number+3))}"
+          ></a>
+    </span>
+    <a class="btn btn-outline-success" th:href="@{'/customerUsings'(page=${customerUsingList.number + 1},nameValue =${search})}" th:if="${customerUsingList.hasNext()}">Next</a>
+</div>
+
+
+
+
+</body>
+</html>

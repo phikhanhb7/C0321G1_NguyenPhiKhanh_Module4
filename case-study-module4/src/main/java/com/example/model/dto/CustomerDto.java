@@ -1,13 +1,28 @@
 package com.example.model.dto;
 
 import com.example.model.entity.customer.CustomerType;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.validation.Errors;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-
-public class CustomerDto {
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class CustomerDto {   //implements Validator
+//
+//    public final String PHONE_NUMBER="^(090|091|(\\(84\\)\\+90)|(\\(84\\)\\+91))[0-9]{7}$";
+//    public final String NAME="^[\\p{L} .'-]+$";
+//    public final String DATE="^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)$"
+//            + "|^(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))$"
+//            + "|^(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))$"
+//            + "|^(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))$";
     private Integer id;
     @NotBlank
 //    @UniqueElements
@@ -23,7 +38,7 @@ public class CustomerDto {
     @Pattern(regexp = "^[0-9]{10}", message = " pls input correct format !")
     private String customerIdCard;
     @NotNull
-    @Pattern(regexp = "^[0-9]{10}")
+    @Pattern(regexp = "^090\\d{7}|\\(84\\)\\+90\\d{7}|091\\d{7}|\\(84\\)\\+91\\d{7}$",message = "Số điện thoại phải đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx")
     private String customerPhone;
     @NotBlank(message = "pls input email")
     @Email(message = "Pls input correct format")
@@ -31,121 +46,25 @@ public class CustomerDto {
     private String customerAddress;
 
 
-    public CustomerDto() {
-    }
-
-    public CustomerDto(String customerCode, CustomerType customerType, String customerName, String customerBirthDay,
-                       String customerGender, String customerIdCard, String customerPhone, String customerEmail, String customerAddress) {
-        this.customerCode = customerCode;
-        this.customerType = customerType;
-        this.customerName = customerName;
-        this.customerBirthDay = customerBirthDay;
-        this.customerGender = customerGender;
-        this.customerIdCard = customerIdCard;
-        this.customerPhone = customerPhone;
-        this.customerEmail = customerEmail;
-        this.customerAddress = customerAddress;
-    }
-
-    public CustomerDto(Integer id, String customerCode, CustomerType customerType, String customerName, String customerBirthDay, String customerGender,
-                       String customerIdCard, String customerPhone, String customerEmail, String customerAddress) {
-        this.id = id;
-        this.customerCode = customerCode;
-        this.customerType = customerType;
-        this.customerName = customerName;
-        this.customerBirthDay = customerBirthDay;
-        this.customerGender = customerGender;
-        this.customerIdCard = customerIdCard;
-        this.customerPhone = customerPhone;
-        this.customerEmail = customerEmail;
-        this.customerAddress = customerAddress;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getCustomerCode() {
-        return customerCode;
-    }
-
-    public void setCustomerCode(String customerCode) {
-        this.customerCode = customerCode;
-    }
-
-    public CustomerType getCustomerType() {
-        return customerType;
-    }
-
-    public void setCustomerType(CustomerType customerType) {
-        this.customerType = customerType;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public String getCustomerBirthDay() {
-        return customerBirthDay;
-    }
-
-    public void setCustomerBirthDay(String customerBirthDay) {
-        this.customerBirthDay = customerBirthDay;
-    }
-
-    public String getCustomerGender() {
-        return customerGender;
-    }
-
-    public void setCustomerGender(String customerGender) {
-        this.customerGender = customerGender;
-    }
-
-    public String getCustomerIdCard() {
-        return customerIdCard;
-    }
-
-    public void setCustomerIdCard(String customerIdCard) {
-        this.customerIdCard = customerIdCard;
-    }
-
-    public String getCustomerPhone() {
-        return customerPhone;
-    }
-
-    public void setCustomerPhone(String customerPhone) {
-        this.customerPhone = customerPhone;
-    }
-
-    public String getCustomerEmail() {
-        return customerEmail;
-    }
-
-    public void setCustomerEmail(String customerEmail) {
-        this.customerEmail = customerEmail;
-    }
-
-    public String getCustomerAddress() {
-        return customerAddress;
-    }
-
-    public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress;
-    }
+//    @Override
+//    public boolean supports(Class<?> clazz) {
+//        return false;
+//    }
+//
 //    @Override
 //    public void validate(Object target, Errors errors) {
-//        CustomerDto customerDto= (CustomerDto) target;
-//        if (customerDto.email.equals("")){
-//            errors.rejectValue("email","email.valid");
+//        CustomerDto customerDto = (CustomerDto) target;
+//        if (!customerDto.customerCode.matches("^KH-[0-9]{4}$")){
+//            errors.rejectValue("customerCode", "customerCode.format");
 //        }
-//
+//        if (!customerDto.customerPhone.matches(PHONE_NUMBER)){
+//            errors.rejectValue("customerPhone", "customerPhone.format");
+//        }
+//        if (!customerDto.customerBirthday.matches(DATE)){
+//            errors.rejectValue("customerBirthday", "customerBirthday.format");
+//        }
+//        if (!customerDto.customerIdCard.matches("^[0-9]{9}$|^[0-9]{12}$")){
+//            errors.rejectValue("customerIdCard", "customerIdCard.format");
+//        }
 //    }
 }

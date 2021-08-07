@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IEmployeeRepository extends JpaRepository<Employee,Integer> {
 
-//    @Query(value = "select e from employee e where concat(e.employee_name,' ',e.employee_birthday) like %?1% " +
-//            " orderby id desc  ", nativeQuery = true)
+    @Query(value = "select * from employee  where concat(employee_name,employee_birthday) like %?1% " +
+            " and flag =0  ", nativeQuery = true)
     Page<Employee> findAllByEmployeeNameContaining(String name,Pageable pageable);
 }

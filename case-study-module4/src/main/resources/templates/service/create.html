@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <style>
+        p {
+            color: red;
+        }
+
+        footer{
+            position:fixed;
+            bottom:0px;
+            left:0px;
+            right:0px;
+            margin-bottom:0px;
+        }
+        hr{
+            color: #00cccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form  th:object="${serviceDto}" class="well form-horizontal" action="/services/create-service" method="post">
+        <a href="/services"><button type="button" class="btn btn-warning" ><span class="glyphicon glyphicon-chevron-left"></span> Back to list</button></a>
+
+        <fieldset>
+            <!-- Form Name -->
+            <legend><center><h2><b>Create Form <br> <span th:text="${mes}" style="color: blue"></span> </b></h2></center></legend><br>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">serviceType</label>
+                <div class="col-md-4 selectContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select th:field="*{serviceType}" class="form-control selectpicker">
+                            <option th:each="d : ${serviceTypeList}"
+                                    th:value="${d.id}"
+                                    th:text="${d.serviceTypeName}">
+                            </option>
+                        </select>
+                    </div>
+                    <p th:errors="*{serviceType}"></p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">rentType</label>
+                <div class="col-md-4 selectContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select th:field="*{rentType}" class="form-control selectpicker">
+                            <option th:each="e : ${rentTypeList}"
+                                    th:value="${e.id}"
+                                    th:text="${e.rentTypeName}">
+                            </option>
+                        </select>
+                    </div>
+                    <p th:errors="*{rentType}"></p>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label ">serviceName</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input  th:field="*{serviceName}" placeholder="Name" class="form-control"  type="text">
+                    </div>
+                    <p th:errors="*{serviceName}"></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label ">serviceCode</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input  th:field="*{serviceCode}" placeholder="BirthDay" class="form-control"  type="text">
+                    </div>
+                    <p th:errors="*{serviceCode}"></p>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">serviceArea</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input th:field="*{serviceArea}"  class="form-control" type="number">
+                    </div>
+                    <p th:errors="*{serviceArea}"></p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">serviceCost</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input th:field="*{serviceCost}"  class="form-control" type="number">
+                    </div>
+                    <p th:errors="*{serviceCost}"></p>
+                </div>
+            </div>
+
+
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">serviceMaxPeople</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
+                        <input th:field="*{serviceMaxPeople}" placeholder="(84)" class="form-control" type="number">
+                    </div>
+                    <p th:errors="*{serviceMaxPeople}"></p>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">standardRoom</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                        <input th:field="*{standardRoom}" placeholder="E-Mail Address" class="form-control"  type="text">
+                    </div>
+                    <p th:errors="*{standardRoom}"></p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label ">descriptionOtherConvenience</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <input  th:field="*{descriptionOtherConvenience}" placeholder="Address" class="form-control"  type="text">
+                    </div>
+                    <p th:errors="*{descriptionOtherConvenience}"></p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label ">poolArea</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <input  th:field="*{poolArea}" placeholder="Address" class="form-control"  type="number">
+                    </div>
+                    <p th:errors="*{poolArea}"></p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label ">numberOfFloors</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <input  th:field="*{numberOfFloors}" placeholder="Address" class="form-control"  type="number">
+                    </div>
+                    <p th:errors="*{numberOfFloors}"></p>
+                </div>
+            </div>
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            <button type="submit" class="btn btn-warning" ><span class="glyphicon glyphicon-send"></span>Submit</button>
+        </fieldset>
+    </form>
+</div>
+</div>
+</body>
+</html>

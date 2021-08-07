@@ -18,6 +18,7 @@ public class Employee {
     private  String employeePhone;
     private  String employeeEmail;
     private String employeeAddress;
+    private boolean flag;
     @ManyToOne(targetEntity = Position.class)
     @JoinColumn(name = "position_id", referencedColumnName = "id")
     private Position position;
@@ -30,10 +31,26 @@ public class Employee {
     @JoinColumn(name = "division_id", referencedColumnName = "id")
     private Division division;
 
-    @OneToMany(mappedBy = "employee")
+    @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL)
     private List<Contract> contractList;
 
     public Employee() {
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
+    public List<Contract> getContractList() {
+        return contractList;
+    }
+
+    public void setContractList(List<Contract> contractList) {
+        this.contractList = contractList;
     }
 
     public Employee(String employeeName, String employeeBirthday, String employeeIdCard, Double employeeSalary,

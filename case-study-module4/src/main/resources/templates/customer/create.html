@@ -55,6 +55,7 @@
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                         <input  th:field="*{customerCode}" placeholder="Code" class="form-control"  type="text">
                     </div>
+                    <p th:text="${codeDuplicate}"></p>
                     <p th:errors="*{customerCode}"></p>
                 </div>
             </div>
@@ -144,7 +145,7 @@
             </div>
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            <button type="submit" class="btn btn-warning" ><span class="glyphicon glyphicon-send"></span>Submit</button>
+            <button type="submit" class="btn btn-warning" ><span class="glyphicon glyphicon-send"></span> Submit</button>
         </fieldset>
     </form>
 </div>

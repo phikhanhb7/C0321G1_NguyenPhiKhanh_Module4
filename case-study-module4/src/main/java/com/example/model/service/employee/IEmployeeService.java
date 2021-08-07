@@ -22,5 +22,5 @@ public interface IEmployeeService {
 
     void save(Employee employee);
 
-    void remove(Integer id);
+    void remove(Employee employee);
 }

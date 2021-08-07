@@ -37,8 +37,8 @@ public class CustomerServiceImpl implements ICustomerService {
     }
 
     @Override
-    public Page<Customer> findByCustomerNameContaining(String name, String birthday, String idCard, Pageable pageable) {
-        return this.iCustomerRepository.findByCustomerNameContaining(name,birthday,idCard,pageable);
+    public Page<Customer> findByCustomerNameContaining(String name, Pageable pageable) {
+        return this.iCustomerRepository.findByCustomerNameContaining(name ,pageable);
     }
 
 }

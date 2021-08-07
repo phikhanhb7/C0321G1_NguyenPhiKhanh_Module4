@@ -46,36 +46,57 @@ public class CustomerController {
 
     @PostMapping(value = "/create-customer")
     public ModelAndView saveCustomer(@Validated @ModelAttribute CustomerDto customerDto, BindingResult bindingResult) {
-        List<CustomerType> customerTypes = (List<CustomerType>) customerTypeService.findAll();
+
+        if (bindingResult.hasErrors()) {
+            for (Customer c : customerService.findAll()) {
+                if (customerDto.getCustomerCode().equals(c.getCustomerCode())) {
+                    ModelAndView modelAndView = new ModelAndView("customer/create");
+                    modelAndView.addObject("customerDto", customerDto);
+                    modelAndView.addObject("codeDuplicate", "Duplicate code");
+                    return modelAndView;
+                }
+
+
+            }
+            for (Customer c : customerService.findAll()) {
+                if (customerDto.getCustomerCode().equals(c.getCustomerCode())) {
+                    ModelAndView modelAndView = new ModelAndView("/customer/create");
+                    modelAndView.addObject("codeDuplicate", "Duplicate code");
+                    return modelAndView;
+                }
+            }
+        }
         Customer customer = new Customer();
         BeanUtils.copyProperties(customerDto, customer);
-        if (bindingResult.hasErrors()) {
-            ModelAndView modelAndView = new ModelAndView("customer/create");
-            modelAndView.addAllObjects(bindingResult.getModel());
-            return modelAndView;
-        } else {
-            customerService.save(customer);
-            ModelAndView modelAndView = new ModelAndView("/customer/create");
-            modelAndView.addObject("customer", customer);
-            modelAndView.addObject("mes", "new customer created successfully");
-            return modelAndView;
-        }
+        customerService.save(customer);
+        ModelAndView modelAndView = new ModelAndView("/customer/create");
+        modelAndView.addObject("customer", customer);
+        modelAndView.addObject("mes", "new customer created successfully");
+        return modelAndView;
     }
 
     @GetMapping(value = "")
     public ModelAndView listCustomer(@RequestParam("search") Optional<String> search,
-                                     @RequestParam("birthday") Optional<String> birthday,
-                                     @RequestParam("idCard") Optional<String> idCard,
                                      @PageableDefault(value = 2) Pageable pageable) {
         Page<Customer> customers;
         ModelAndView modelAndView = new ModelAndView("/customer/list");
-        customers = customerService.findByCustomerNameContaining(search.orElse(""), birthday.orElse(""), idCard.orElse(""), pageable);
+        customers = customerService.findByCustomerNameContaining(search.orElse(""), pageable);
         modelAndView.addObject("search", search.orElse(""));
-        modelAndView.addObject("birthday", birthday.orElse(""));
-        modelAndView.addObject("idCard", idCard.orElse(""));
         modelAndView.addObject("customers", customers);
         return modelAndView;
     }
+
+//    @GetMapping("")
+//    public String listCustomer(@RequestParam("search") Optional<String> search,
+//                               @PageableDefault(value = 2) Pageable pageable , Model model){
+//        String searchValue ="";
+//        if (search.isPresent()){
+//            searchValue = search.get();
+//        }
+//        model.addAttribute("customers",customerService.findByCustomerNameContaining(searchValue,pageable));
+//        model.addAttribute("search",searchValue);
+//        return "/customer/list";
+//    }
 
     @GetMapping(value = "/edit-customer/{id}")
     public String showEditForm(@PathVariable Integer id, Model model){

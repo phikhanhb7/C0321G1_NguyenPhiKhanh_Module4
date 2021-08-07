@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <title>Furama Resort</title>
+    <style>
+        #footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 3;
+        }
+
+        #nav-bar-sticky {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+        }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div th:fragment="hearder">
+    <div class="container-fluid d-flex position-relative border-0 row   ">
+        <div class="col-3 ">
+            <a href="" class="img-fluid"><img src="/img/logo_furama/logo_furama.png" height="117" width="87"/></a>
+        </div>
+        <div class="col-3">
+            <a class=" img-fluid mx-5 px-5 align-items-center img-fluid"
+               href="https://www.tripadvisor.com/Hotel_Review-g298085-d302750-Reviews-Furama_Resort_Danang-Da_Nang.html">
+                <img
+                        class="img-fluid  " src="/img/logo_tripadvisor/logo_tripadvisor.png"
+                /></a>
+        </div>
+        <div class="col-6 text-right mt-2"><span style="font-size: 30px ;"> Phi Khanh</span>`
+        </div>
+    </div>
+    <nav class="navbar navbar-expand-lg navbar-dark  container-fluid font-weight-bolder px-0 text-white" id="nav-bar-sticky"
+         style=" height: 47px;background: #0F574B">
+
+        <div class="collapse navbar-collapse  " id="navbarsExample07">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active px-5">
+                    <a class="text-white" href="/home">Home</a>
+                </li>
+
+                <li class="nav-item active px-5">
+                    <a class="text-white" href="/customers">Customer</a>
+                </li>
+
+                <li class="nav-item active px-5">
+                    <a class="text-white" href="/employees">Employee</a>
+                </li>
+
+
+                <li class="nav-item active px-5">
+                    <a class="text-white" href="/services">Service</a>
+                </li>
+
+                <li class="nav-item active px-5">
+                    <a class="text-white" href="/contracts">Contract</a>
+                </li>
+                <li class="nav-item active px-5">
+                    <a class="text-white" href="/contractDetails">Contract Detail</a>
+                </li>
+                <li class="nav-item active px-5">
+                    <a class="text-white" href="/customerUsings">Customer Using Service</a>
+                </li>
+            </ul>
+
+        </div>
+    </nav>
+</div>
+</body>
+</html>

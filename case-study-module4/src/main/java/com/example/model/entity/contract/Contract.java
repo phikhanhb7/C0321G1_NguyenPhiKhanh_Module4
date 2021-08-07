@@ -18,7 +18,8 @@ public class Contract {
     private  String contractEndDay;
     private double contractDeposit;
     private double contractTotal;
-    @OneToMany(targetEntity = ContractDetail.class)
+    private boolean flag;
+    @OneToMany(targetEntity = ContractDetail.class,cascade = CascadeType.ALL)
     private List<ContractDetail> contractDetails;
 
     @ManyToOne(targetEntity = Services.class)
@@ -34,6 +35,14 @@ public class Contract {
     private Customer customer;
 
     public Contract() {
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
     }
 
     public Contract(Integer id, String contractStartDay, String contractEndDay, double contractDeposit, double contractTotal,

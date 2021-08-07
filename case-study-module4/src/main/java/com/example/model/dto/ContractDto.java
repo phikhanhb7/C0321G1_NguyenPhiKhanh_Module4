@@ -4,16 +4,25 @@ import com.example.model.entity.contract.ContractDetail;
 import com.example.model.entity.customer.Customer;
 import com.example.model.entity.employee.Employee;
 import com.example.model.entity.service.Services;
+import lombok.*;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
-
-public class ContractDto {
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class ContractDto implements Validator {
     private  Integer id;
-    @NotNull
+
     private  String contractStartDay;
-    @NotNull
+
     private  String contractEndDay;
     @NotNull(message = "input not null")
     @Min(value = 0,message = "pls input value >0")
@@ -30,103 +39,35 @@ public class ContractDto {
 
     private Customer customer;
 
-    public ContractDto() {
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
     }
 
-    public ContractDto(Integer id, String contractStartDay, String contractEndDay, double contractDeposit, double contractTotal, List<ContractDetail> contractDetails,
-                       Services service, Employee employee, Customer customer) {
-        this.id = id;
-        this.contractStartDay = contractStartDay;
-        this.contractEndDay = contractEndDay;
-        this.contractDeposit = contractDeposit;
-        this.contractTotal = contractTotal;
-        this.contractDetails = contractDetails;
-        this.service = service;
-        this.employee = employee;
-        this.customer = customer;
-    }
+    @Override
+    public void validate(Object target, Errors errors) {
+        ContractDto contractDto = (ContractDto) target;
 
-    public ContractDto(String contractStartDay, String contractEndDay, double contractDeposit, double contractTotal, List<ContractDetail> contractDetails,
-                       Services service, Employee employee, Customer customer) {
-        this.contractStartDay = contractStartDay;
-        this.contractEndDay = contractEndDay;
-        this.contractDeposit = contractDeposit;
-        this.contractTotal = contractTotal;
-        this.contractDetails = contractDetails;
-        this.service = service;
-        this.employee = employee;
-        this.customer = customer;
-    }
+        try {
 
-    public Integer getId() {
-        return id;
-    }
+            if (contractDto.contractStartDay.equals("")){
+                errors.rejectValue("contractStartDay", "contractStartDay.valid", "Pls input");
+            }
+            if (contractDto.contractEndDay.equals("")){
+                errors.rejectValue("contractEndDay", "contractEndDay.valid", "Pls input");
+            }
+            else {
+                Date sDate = new SimpleDateFormat("yyyy-MM-dd").parse(contractDto.contractStartDay);
+                Date eDate= new SimpleDateFormat("yyyy-MM-dd").parse(contractDto.contractEndDay);
+                if (eDate.getTime()<sDate.getTime()){
+                    errors.rejectValue("contractEndDay", "endDate.valid", "End date must be more start date");
+                }
+            }
 
-    public void setId(Integer id) {
-        this.id = id;
-    }
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
-    public String getContractStartDay() {
-        return contractStartDay;
-    }
-
-    public void setContractStartDay(String contractStartDay) {
-        this.contractStartDay = contractStartDay;
-    }
-
-    public String getContractEndDay() {
-        return contractEndDay;
-    }
-
-    public void setContractEndDay(String contractEndDay) {
-        this.contractEndDay = contractEndDay;
-    }
-
-    public double getContractDeposit() {
-        return contractDeposit;
-    }
-
-    public void setContractDeposit(double contractDeposit) {
-        this.contractDeposit = contractDeposit;
-    }
-
-    public double getContractTotal() {
-        return contractTotal;
-    }
-
-    public void setContractTotal(double contractTotal) {
-        this.contractTotal = contractTotal;
-    }
-
-    public List<ContractDetail> getContractDetails() {
-        return contractDetails;
-    }
-
-    public void setContractDetails(List<ContractDetail> contractDetails) {
-        this.contractDetails = contractDetails;
-    }
-
-    public Services getService() {
-        return service;
-    }
-
-    public void setService(Services service) {
-        this.service = service;
-    }
-
-    public Employee getEmployee() {
-        return employee;
-    }
-
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
     }
 }

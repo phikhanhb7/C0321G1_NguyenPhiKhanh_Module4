@@ -21,7 +21,7 @@ public class Customer {
     private String customerPhone;
     private String customerEmail;
     private String customerAddress;
-    @OneToMany(mappedBy = "customer")
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL)
     private List<Contract> contractList;
     private boolean flag;
 

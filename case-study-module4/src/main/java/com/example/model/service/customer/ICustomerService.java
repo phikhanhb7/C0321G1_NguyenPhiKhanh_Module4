@@ -10,7 +10,7 @@ import java.util.Optional;
 public interface ICustomerService {
     Iterable<Customer> findAll();
 
-    Page<Customer> findByCustomerNameContaining(String name, String birthday, String idCard, Pageable pageable);
+    Page<Customer> findByCustomerNameContaining(String name , Pageable pageable);
 
     Optional<Customer> findById(Integer id);
 

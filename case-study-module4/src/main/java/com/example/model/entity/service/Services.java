@@ -19,6 +19,7 @@ public class Services {
     private String descriptionOtherConvenience;
     private  double poolArea;
     private int numberOfFloors;
+    private boolean flag;
     @ManyToOne(targetEntity = ServiceType.class)
     @JoinColumn(name = "service_type_id", referencedColumnName = "id")
     private ServiceType serviceType;
@@ -27,10 +28,26 @@ public class Services {
     @JoinColumn(name = "rent_type_id",referencedColumnName = "id")
     private  RentType rentType;
 
-    @OneToMany(mappedBy = "service")
+    @OneToMany(mappedBy = "service",cascade = CascadeType.ALL)
     private List<Contract> contractList;
 
     public Services() {
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
+    public List<Contract> getContractList() {
+        return contractList;
+    }
+
+    public void setContractList(List<Contract> contractList) {
+        this.contractList = contractList;
     }
 
     public Services(Integer id, String serviceName, String serviceCode, int serviceArea, double serviceCost, int serviceMaxPeople, String standardRoom,

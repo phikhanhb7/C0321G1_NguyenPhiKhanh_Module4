@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layuot :: head}">
+
+</head>
+
+
+<body>
+
+<div th:replace="~{layuot :: hearder}">
+</div>
+<div style="background: azure">
+    <div style="margin-top: 50px">
+        <a href="/contractDetails/create-contractDetail">
+            <button type="button" class="btn btn-primary"> ++Create ContractDetail</button>
+        </a>
+    </div>
+
+    <div style=" text-align: right">
+        <a href="/home">
+            <button type="button" class="btn btn-warning">Back to home</button>
+        </a>
+    </div>
+    <h1 style="color: blue; text-align: center;">ContractDetail</h1>
+
+    <th:block th:if="${mes}">
+        <p th:text="${mes}"></p>
+    </th:block>
+
+</div>
+
+
+<table class="table table-bordered table-striped ">
+    <tr>
+        <td>#</td>
+        <td>contract ID</td>
+        <td>attachService</td>
+        <td>quantity</td>
+    </tr>
+
+    <th:block th:each="contract,state : ${contractDetails}">
+        <tr>
+
+            <td th:text="${state.count}"></td>
+            <td th:text="${contract.contract.id}"></td>
+            <td th:text="${contract.attachService.attachServiceName}"></td>
+            <td th:text="${contract.quantity}"></td>
+
+        </tr>
+    </th:block>
+</table>
+
+
+<!--#region phân trang-->
+<div>
+    <a class="btn btn-outline-success" th:href="@{'/contractDetails'(page=${contractDetails.number - 1})}"
+       th:if="${contractDetails.hasPrevious()}">Previous</a>
+    <span th:each="p : ${#numbers.sequence(0,contractDetails.totalPages - 1) }" th:if="${contractDetails.hasContent()}">
+          <a class="btn btn-outline-success" th:href="@{'/contractDetails'(page=${p})}"
+             th:text="${p+1}"
+             th:if="${(p>(contractDetails.number)-1)&&(p<(contractDetails.number+3))}"
+          ></a>
+    </span>
+    <a class="btn btn-outline-success" th:href="@{'/contractDetails'(page=${contractDetails.number + 1})}" th:if="${contractDetails.hasNext()}">Next</a>
+</div>
+
+
+
+
+</body>
+</html>

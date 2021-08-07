@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layuot :: head}">
+</head>
+
+<body>
+
+<div th:replace="~{layuot :: hearder}">
+</div>
+<div style="background: azure">
+    <div style="margin-top: 50px">
+        <a href="/contracts/create-contract">
+            <button type="button" class="btn btn-primary"> ++Create Contract</button>
+        </a>
+    </div>
+
+    <div style=" text-align: right">
+        <a href="/home">
+            <button type="button" class="btn btn-warning">Back to home</button>
+        </a>
+    </div>
+    <h1 style="color: blue; text-align: center;">Contract</h1>
+
+    <th:block th:if="${mes}">
+        <p th:text="${mes}"></p>
+    </th:block>
+
+</div>
+
+
+<table class="table table-bordered table-striped ">
+    <tr>
+        <td>#</td>
+        <td>customer</td>
+        <td>employee</td>
+        <td>service</td>
+        <td>contractStartDay</td>
+        <td>contractEndDay</td>
+        <td>contractDeposit</td>
+        <td>Delete</td>
+
+    </tr>
+
+    <th:block th:each="contract,state : ${contracts}">
+        <tr>
+
+            <td th:text="${state.count}"></td>
+            <td th:text="${contract.customer.customerName}"></td>
+            <td th:text="${contract.employee.employeeName}"></td>
+            <td th:text="${contract.service.serviceName}"></td>
+            <td th:text="${contract.contractStartDay}"></td>
+            <td th:text="${contract.contractEndDay}"></td>
+            <td th:text="${contract.contractDeposit}"></td>
+            <td>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#myModal"
+                        th:data-parameter1="${contract.id}"
+                        onclick="showModal(this.getAttribute('data-parameter1'))">
+                    Delete
+                </button>
+            </td>
+
+        </tr>
+    </th:block>
+</table>
+<!--modal-->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form th:action="@{/contracts/delete-contract}" method="get">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Accept delete Employee </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Do you want to delete ???</h5>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-danger btn-ok" id="delete" value="Delete">
+                    <input type="hidden" id="contractId" name="id">
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<!--#region phân trang-->
+<div>
+    <a class="btn btn-outline-success" th:href="@{'/contracts'(page=${contracts.number - 1})}"
+       th:if="${contracts.hasPrevious()}">Previous</a>
+    <span th:each="p : ${#numbers.sequence(0,contracts.totalPages - 1) }" th:if="${contracts.hasContent()}">
+          <a class="btn btn-outline-success" th:href="@{'/contracts'(page=${p})}"
+             th:text="${p+1}"
+             th:if="${(p>(contracts.number)-1)&&(p<(contracts.number+3))}"
+          ></a>
+    </span>
+    <a class="btn btn-outline-success" th:href="@{'/contracts'(page=${contracts.number + 1})}" th:if="${contracts.hasNext()}">Next</a>
+</div>
+
+
+<script>
+    function showModal(id) {
+        document.getElementById("contractId").value = id;
+    }
+</script>
+
+</body>
+</html>

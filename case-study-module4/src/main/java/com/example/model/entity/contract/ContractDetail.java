@@ -12,7 +12,7 @@ public class ContractDetail {
     @JoinColumn(name = "attach_service_id", referencedColumnName = "id")
     private AttachService attachService;
 
-    @ManyToOne(targetEntity = Contract.class)
+    @ManyToOne(targetEntity = Contract.class,cascade = CascadeType.ALL)
     @JoinColumn(name = "contract_id", referencedColumnName = "id")
     private Contract contract;
 

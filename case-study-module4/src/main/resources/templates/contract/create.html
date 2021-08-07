@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <style>
+        p {
+            color: red;
+        }
+
+        footer{
+            position:fixed;
+            bottom:0px;
+            left:0px;
+            right:0px;
+            margin-bottom:0px;
+        }
+        hr{
+            color: #00cccc;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <form  th:object="${contractDto}" class="well form-horizontal" action="/contracts/create-contract" method="post">
+        <a href="/contracts"><button type="button" class="btn btn-warning" ><span class="glyphicon glyphicon-chevron-left"></span> Back to list</button></a>
+
+        <fieldset>
+            <!-- Form Name -->
+            <legend><center><h2><b>Create Form <br> <span th:text="${mes}" style="color: blue"></span> </b></h2></center></legend><br>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Customer </label>
+                <div class="col-md-4 selectContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select th:field="*{customer}" class="form-control selectpicker">
+                            <option th:each="customer : ${customerList}"
+                                    th:value="${customer.id}"
+                                    th:text="${customer.customerName}">
+                            </option>
+                        </select>
+                    </div>
+                    <p th:errors="*{customer}"></p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">employee</label>
+                <div class="col-md-4 selectContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select th:field="*{employee}" class="form-control selectpicker">
+                            <option th:each="e : ${employeeList}"
+                                    th:value="${e.id}"
+                                    th:text="${e.employeeName}">
+                            </option>
+                        </select>
+                    </div>
+                    <p th:errors="*{employee}"></p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Service</label>
+                <div class="col-md-4 selectContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select th:field="*{service}" class="form-control selectpicker">
+                            <option th:each="p : ${serviceList}"
+                                    th:value="${p.id}"
+                                    th:text="${p.serviceName}">
+                            </option>
+                        </select>
+                    </div>
+                    <p th:errors="*{service}"></p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label ">contractStartDay</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input  th:field="*{contractStartDay}" placeholder="contractStartDay" class="form-control"  type="date">
+                    </div>
+                    <p th:errors="*{contractStartDay}"></p>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-md-4 control-label ">contractEndDay</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input  th:field="*{contractEndDay}" placeholder="contractEndDay" class="form-control"  type="date">
+                    </div>
+                    <p th:errors="*{contractEndDay}"></p>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">contractDeposit</label>
+                <div class="col-md-4 inputGroupContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input th:field="*{contractDeposit}"  class="form-control" type="number">
+                    </div>
+                    <p th:errors="*{contractDeposit}"></p>
+                </div>
+            </div>
+
+
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+            <button type="submit" class="btn btn-warning" ><span class="glyphicon glyphicon-send"></span>Submit</button>
+        </fieldset>
+    </form>
+</div>
+</div>
+</body>
+</html>

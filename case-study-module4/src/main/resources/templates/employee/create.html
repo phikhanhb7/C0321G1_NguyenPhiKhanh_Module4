@@ -25,88 +25,107 @@
 <body>
 
 <div class="container">
-    <form  th:object="${customerDto}" class="well form-horizontal" action="/customers/create-customer" method="post">
-        <a href="/customers"><button type="button" class="btn btn-warning" ><span class="glyphicon glyphicon-chevron-left"></span> Back to list</button></a>
+    <form  th:object="${employeeDto}" class="well form-horizontal" action="/employees/create-employee" method="post">
+        <a href="/employees"><button type="button" class="btn btn-warning" ><span class="glyphicon glyphicon-chevron-left"></span> Back to list</button></a>
 
         <fieldset>
             <!-- Form Name -->
             <legend><center><h2><b>Create Form <br> <span th:text="${mes}" style="color: blue"></span> </b></h2></center></legend><br>
 
             <div class="form-group">
-                <label class="col-md-4 control-label">Customer Type</label>
+                <label class="col-md-4 control-label">Division</label>
                 <div class="col-md-4 selectContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-                        <select th:field="*{customerType}" class="form-control selectpicker">
-                            <option th:each="c : ${customerTypes}"
-                                    th:value="${c.id}"
-                                    th:text="${c.customerTypeName}">
+                        <select th:field="*{division}" class="form-control selectpicker">
+                            <option th:each="d : ${divisionList}"
+                                    th:value="${d.id}"
+                                    th:text="${d.divisionName}">
                             </option>
                         </select>
                     </div>
-                    <p th:errors="*{customerType}"></p>
+                    <p th:errors="*{division}"></p>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-md-4 control-label ">Code</label>
-                <div class="col-md-4 inputGroupContainer">
+                <label class="col-md-4 control-label">Education</label>
+                <div class="col-md-4 selectContainer">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input  th:field="*{customerCode}" placeholder="Code" class="form-control"  type="text">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select th:field="*{educationDegree}" class="form-control selectpicker">
+                            <option th:each="e : ${educationDegreeList}"
+                                    th:value="${e.id}"
+                                    th:text="${e.educationDegreeName}">
+                            </option>
+                        </select>
                     </div>
-                    <p th:errors="*{customerCode}"></p>
+                    <p th:errors="*{educationDegree}"></p>
                 </div>
             </div>
+
+            <div class="form-group">
+                <label class="col-md-4 control-label">Position</label>
+                <div class="col-md-4 selectContainer">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
+                        <select th:field="*{position}" class="form-control selectpicker">
+                            <option th:each="p : ${positionList}"
+                                    th:value="${p.id}"
+                                    th:text="${p.positionName}">
+                            </option>
+                        </select>
+                    </div>
+                    <p th:errors="*{position}"></p>
+                </div>
+            </div>
+
             <div class="form-group">
                 <label class="col-md-4 control-label ">Name</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input  th:field="*{customerName}" placeholder="Name" class="form-control"  type="text">
+                        <input  th:field="*{employeeName}" placeholder="Name" class="form-control"  type="text">
                     </div>
-                    <p th:errors="*{customerName}"></p>
+                    <p th:errors="*{employeeName}"></p>
                 </div>
             </div>
-
-
             <div class="form-group">
-                <label class="col-md-4 control-label">Birthday</label>
+                <label class="col-md-4 control-label ">BirthDay</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input  th:field="*{customerBirthDay}" placeholder="Birthday" class="form-control"  type="date">
+                        <input  th:field="*{employeeBirthday}" placeholder="BirthDay" class="form-control"  type="date">
                     </div>
-                    <p th:errors="*{customerBirthDay}"></p>
+                    <p th:errors="*{employeeBirthday}"></p>
                 </div>
             </div>
+
+
 
             <div class="form-group">
                 <label class="col-md-4 control-label">Id Card</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input th:field="*{customerIdCard}"  class="form-control" type="number">
+                        <input th:field="*{employeeIdCard}"  class="form-control" type="number">
                     </div>
-                    <p th:errors="*{customerIdCard}"></p>
+                    <p th:errors="*{employeeIdCard}"></p>
                 </div>
             </div>
-
 
             <div class="form-group">
-                <label class="col-md-4 control-label">Gender</label>
-                <div class="col-md-4 selectContainer">
+                <label class="col-md-4 control-label">Salary</label>
+                <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-heart"></i></span>
-                        <select th:field="*{customerGender}" class="form-control selectpicker">
-                            <option value="1">Male</option>
-                            <option value="0">FeMale</option>
-                            <option value="2">Other</option>
-                        </select>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input th:field="*{employeeSalary}"  class="form-control" type="number">
                     </div>
-                    <p th:errors="*{customerGender}"></p>
+                    <p th:errors="*{employeeSalary}"></p>
                 </div>
             </div>
+
+
 
 
             <div class="form-group">
@@ -114,9 +133,9 @@
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                        <input th:field="*{customerPhone}" placeholder="(84)" class="form-control" type="number">
+                        <input th:field="*{employeePhone}" placeholder="(84)" class="form-control" type="number">
                     </div>
-                    <p th:errors="*{customerPhone}"></p>
+                    <p th:errors="*{employeePhone}"></p>
                 </div>
             </div>
 
@@ -126,9 +145,9 @@
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                        <input th:field="*{customerEmail}" placeholder="E-Mail Address" class="form-control"  type="email">
+                        <input th:field="*{employeeEmail}" placeholder="E-Mail Address" class="form-control"  type="email">
                     </div>
-                    <p th:errors="*{customerEmail}"></p>
+                    <p th:errors="*{employeeEmail}"></p>
                 </div>
             </div>
 
@@ -137,9 +156,9 @@
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                        <input  th:field="*{customerAddress}" placeholder="Address" class="form-control"  type="text">
+                        <input  th:field="*{employeeAddress}" placeholder="Address" class="form-control"  type="text">
                     </div>
-                    <p th:errors="*{customerAddress}"></p>
+                    <p th:errors="*{employeeAddress}"></p>
                 </div>
             </div>
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
