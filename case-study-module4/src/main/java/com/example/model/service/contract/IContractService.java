@@ -18,5 +18,7 @@ public interface IContractService {
     Optional<Contract> findById(Integer id);
 
     Page<Contract> findAllContractUsing(String name, Pageable pageable);
+//
+//    void setContractTotal(Page<Contract> contracts);
 
 }

@@ -69,7 +69,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username")//
                 .passwordParameter("password")
                 // Cấu hình cho Logout Page.
-                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/logoutSuccessful");
+                .and().logout().logoutUrl("/logout").logoutSuccessUrl("/home");
 
         // Cấu hình Remember Me.
         http.authorizeRequests().and() //

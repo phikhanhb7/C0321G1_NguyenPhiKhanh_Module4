@@ -31,6 +31,9 @@ public interface IContractRepository extends JpaRepository<Contract,Integer> {
                 "and customer.customer_name like %?1% " +
                 " and contract.flag = false " , nativeQuery = true )
         Page<Contract> findAllContractUsing(String name , Pageable pageable);
+
+
+//        void setContractTotal(Page<Contract> contracts);
 }
 
 

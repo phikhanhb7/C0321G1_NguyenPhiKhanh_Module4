@@ -7,7 +7,7 @@ public class ContractDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Integer id;
-    private int quantity;
+    private Integer quantity;
     @ManyToOne(targetEntity = AttachService.class)
     @JoinColumn(name = "attach_service_id", referencedColumnName = "id")
     private AttachService attachService;

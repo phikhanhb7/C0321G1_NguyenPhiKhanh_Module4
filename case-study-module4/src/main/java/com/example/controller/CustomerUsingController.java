@@ -46,7 +46,9 @@ public class CustomerUsingController {
             }
             contract.setContractTotal(totalMoney);
         }
-        model.addAttribute("contractDetailList",contractDetailService.findAllByAttachService());
+
+
+        model.addAttribute("contractDetailList",contractDetailService.findAllByContractDetailByAttachService());
         model.addAttribute("customerUsingList",contractCustomerUsing);
         model.addAttribute("search",nameValue);
         return "/customerUsing/list";

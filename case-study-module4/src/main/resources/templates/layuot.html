@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:fragment="head">
 
     <meta charset="UTF-8">
@@ -46,7 +47,9 @@
                         class="img-fluid  " src="/img/logo_tripadvisor/logo_tripadvisor.png"
                 /></a>
         </div>
-        <div class="col-6 text-right mt-2"><span style="font-size: 30px ;"> Phi Khanh</span>`
+       <div sec:authorize="isAuthenticated()" class="col-sm-3 text-right align-self-center"> Xin chào :
+            <span sec:authentication="name"></span>
+           <a  th:href="@{/logout}">Thoát</a>
         </div>
     </div>
     <nav class="navbar navbar-expand-lg navbar-dark  container-fluid font-weight-bolder px-0 text-white" id="nav-bar-sticky"

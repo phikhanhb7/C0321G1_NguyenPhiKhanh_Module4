@@ -1,17 +1,14 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <title>Access Denied</title>
+<head th:replace="~{layuot :: head}">
+
 </head>
 
 <body>
-<!-- Include _menu.html -->
-<th:block th:include="/_menu"></th:block>
-
-<h3 th:if="${message != null}" th:utext="${message}" style="color: red;"></h3>
-
-<div th:if="${userInfo != null}" th:utext="${userInfo}"></div>
-
+<div th:replace="~{layuot :: hearder}">
+</div>
+<h1 style="color: red ; text-align: center;margin-top: 50px">
+    You do not have permission to access this page </h1>
 </body>
 
 </html>

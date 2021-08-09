@@ -60,13 +60,13 @@
                         <a class="nav-link dropdown-toggle text-dark" data-toggle="dropdown" role="button"
                            aria-haspopup="true" aria-expanded="false">
                         <span th:each="con : ${contractDetailList}"
-                              th:text="${con.contract.id == customerUsing.id ? con.attachService.attachServiceName + ' - ' : ''}">
+                              th:text="${con.contractId == customerUsing.id ? con.attachServiceName + ' - ' : ''}">
                         </span>
                         </a>
                         <div class="dropdown-menu">
                         <span class="dropdown-item" th:each="con : ${contractDetailList}"
-                              th:text="${con.contract.id == customerUsing.id ?
-                              (con.attachService.attachServiceName + ' - Số lượng: ' + con.quantity) : ''}">
+                              th:text="${con.contractId == customerUsing.id ?
+                              (con.attachServiceName + ' - Số lượng: ' + con.quantity) : ''}">
                         </span>
                         </div>
                     </li>
