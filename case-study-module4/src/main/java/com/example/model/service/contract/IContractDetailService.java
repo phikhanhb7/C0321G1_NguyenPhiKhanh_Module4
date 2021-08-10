@@ -7,6 +7,7 @@ import com.example.model.entity.contract.ContractDetail;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IContractDetailService {
     Iterable<ContractDetail> findAllContractDetail(Pageable pageable);
@@ -16,6 +17,8 @@ public interface IContractDetailService {
 
     List<ContractInterfaceDto> findAllByContractDetailByAttachService();
 
-
+    Optional<ContractDetail> findById(Integer id);
     List<ContractDetail> findAllByContract_Id(Integer id);
+
+
 }

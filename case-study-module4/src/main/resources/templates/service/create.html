@@ -33,7 +33,7 @@
             <legend><center><h2><b>Create Form <br> <span th:text="${mes}" style="color: blue"></span> </b></h2></center></legend><br>
 
             <div class="form-group">
-                <label class="col-md-4 control-label">serviceType</label>
+                <label class="col-md-4 control-label">Service Type</label>
                 <div class="col-md-4 selectContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
@@ -49,7 +49,7 @@
             </div>
 
             <div class="form-group">
-                <label class="col-md-4 control-label">rentType</label>
+                <label class="col-md-4 control-label">Rent Type</label>
                 <div class="col-md-4 selectContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
@@ -66,7 +66,7 @@
 
 
             <div class="form-group">
-                <label class="col-md-4 control-label ">serviceName</label>
+                <label class="col-md-4 control-label ">Service Name</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -76,12 +76,13 @@
                 </div>
             </div>
             <div class="form-group">
-                <label class="col-md-4 control-label ">serviceCode</label>
+                <label class="col-md-4 control-label ">Service Code</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input  th:field="*{serviceCode}" placeholder="BirthDay" class="form-control"  type="text">
+                        <input  th:field="*{serviceCode}" placeholder="Service Code" class="form-control"  type="text">
                     </div>
+                    <p th:text="${codeDuplicate}"></p>
                     <p th:errors="*{serviceCode}"></p>
                 </div>
             </div>
@@ -89,7 +90,7 @@
 
 
             <div class="form-group">
-                <label class="col-md-4 control-label">serviceArea</label>
+                <label class="col-md-4 control-label">Service Area</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -100,7 +101,7 @@
             </div>
 
             <div class="form-group">
-                <label class="col-md-4 control-label">serviceCost</label>
+                <label class="col-md-4 control-label">Service Cost</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
@@ -114,11 +115,11 @@
 
 
             <div class="form-group">
-                <label class="col-md-4 control-label">serviceMaxPeople</label>
+                <label class="col-md-4 control-label">Service Max People</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-earphone"></i></span>
-                        <input th:field="*{serviceMaxPeople}" placeholder="(84)" class="form-control" type="number">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input th:field="*{serviceMaxPeople}"  class="form-control" type="number">
                     </div>
                     <p th:errors="*{serviceMaxPeople}"></p>
                 </div>
@@ -126,40 +127,40 @@
 
 
             <div class="form-group">
-                <label class="col-md-4 control-label">standardRoom</label>
+                <label class="col-md-4 control-label">Standard Room</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                        <input th:field="*{standardRoom}" placeholder="E-Mail Address" class="form-control"  type="text">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <input th:field="*{standardRoom}"  class="form-control"  type="text">
                     </div>
                     <p th:errors="*{standardRoom}"></p>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-md-4 control-label ">descriptionOtherConvenience</label>
+                <label class="col-md-4 control-label ">Description Other Convenience</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                        <input  th:field="*{descriptionOtherConvenience}" placeholder="Address" class="form-control"  type="text">
+                        <input  th:field="*{descriptionOtherConvenience}"  class="form-control"  type="text">
                     </div>
                     <p th:errors="*{descriptionOtherConvenience}"></p>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-md-4 control-label ">poolArea</label>
+                <label class="col-md-4 control-label ">Pool Area</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
-                        <input  th:field="*{poolArea}" placeholder="Address" class="form-control"  type="number">
+                        <input  th:field="*{poolArea}"  class="form-control"  type="number">
                     </div>
                     <p th:errors="*{poolArea}"></p>
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-md-4 control-label ">numberOfFloors</label>
+                <label class="col-md-4 control-label ">Number Of Floors</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
@@ -170,7 +171,7 @@
             </div>
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
             &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
-            <button type="submit" class="btn btn-warning" ><span class="glyphicon glyphicon-send"></span>Submit</button>
+            <button type="submit" class="btn btn-warning" ><span class="glyphicon glyphicon-send"></span>  Submit</button>
         </fieldset>
     </form>
 </div>

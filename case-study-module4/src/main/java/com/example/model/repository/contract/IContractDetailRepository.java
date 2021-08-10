@@ -3,6 +3,8 @@ package com.example.model.repository.contract;
 
 import com.example.model.dto.ContractInterfaceDto;
 import com.example.model.entity.contract.ContractDetail;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -19,4 +21,7 @@ public interface IContractDetailRepository extends JpaRepository<ContractDetail,
     List<ContractInterfaceDto> findAllByContractDetailByAttachService();
 
     List<ContractDetail> findAllByContract_Id(Integer id);
+    @Query(value= " select  * from contract_detail where flag =0", nativeQuery = true,
+            countQuery = "select  count(*) from  contract_detail where flag =0")
+    Page<ContractDetail> findAll(Pageable pageable);
 }

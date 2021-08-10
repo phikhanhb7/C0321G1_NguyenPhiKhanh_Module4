@@ -12,12 +12,12 @@
 <div th:replace="~{layuot :: hearder}">
 </div>
 <div style="background: azure">
-    <div style="margin-top: 50px">
+    <div  style=" display:inline-block;width: 60%; float: left ; margin: 15px 5%">
         <a href="/services/create-service">
             <button type="button" class="btn btn-primary"> ++Create Service</button>
         </a>
     </div>
-    <div style=" text-align: right">
+    <div style=" text-align: right; display: inline-block; width: 20% ; margin:15px 5%">
         <a href="/home">
             <button type="button" class="btn btn-warning">Back to home</button>
         </a>
@@ -30,62 +30,66 @@
 
 </div>
 
-
-<table class="table table-bordered table-striped ">
-    <tr>
-        <td>#</td>
-        <td>serviceType</td>
-        <td>rentType</td>
-       <td>serviceName</td>
-        <td>serviceCode</td>
-       <td>serviceArea</td>
-       <td>serviceCost</td>
-       <td>serviceMaxPeople</td>
-       <td>standardRoom</td>
-       <td>descriptionOtherConvenience</td>
-       <td>poolArea</td>
-       <td>numberOfFloors</td>
-       <td>Delete</td>
-
-    </tr>
-
-    <th:block th:each="s,state : ${services}">
+<div class="container-fluid">
+    <table class="table table-bordered table-striped ">
         <tr>
+            <td>#</td>
+            <td>Service Type</td>
+            <td>Rent Type</td>
+            <td>Service Name</td>
+            <td>Service Code</td>
+            <td>Service Area</td>
+            <td>Service Cost</td>
+            <td>Service Max People</td>
+            <td>Standard Room</td>
+            <td>Description Other Convenience</td>
+            <td>Pool Area</td>
+            <td>Number Of Floors</td>
+            <td>Delete</td>
 
-            <td th:text="${state.count}"></td>
-            <td th:text="${s.serviceType.serviceTypeName}"></td>
-            <td th:text="${s.rentType.rentTypeName}"></td>
-            <td th:text="${s.serviceName}"></td>
-            <td th:text="${s.serviceCode}"></td>
-            <td th:text="${s.serviceArea}"></td>
-            <td th:text="${s.serviceCost}"></td>
-            <td th:text="${s.serviceMaxPeople}"></td>
-            <td th:text="${s.standardRoom}"></td>
-            <td th:text="${s.descriptionOtherConvenience}"></td>
-            <td th:text="${s.poolArea}"></td>
-            <td th:text="${s.numberOfFloors}"></td>
-            <td>
-                <button class="btn btn-danger" data-toggle="modal" data-target="#myModal"
-                        th:data-parameter1="${s.id}"
-                        onclick="showModal(this.getAttribute('data-parameter1'))">
-                    Delete
-                </button>
-            </td>
         </tr>
-    </th:block>
-</table>
 
-<div>
-    <a class="btn btn-outline-success" th:href="@{'/services'(page=${services.number - 1})}"
-       th:if="${services.hasPrevious()}">Previous</a>
-    <span th:each="p : ${#numbers.sequence(0,services.totalPages - 1) }" th:if="${services.hasContent()}">
+        <th:block th:each="s,state : ${services}">
+            <tr>
+
+                <td th:text="${state.count}"></td>
+                <td th:text="${s.serviceType.serviceTypeName}"></td>
+                <td th:text="${s.rentType.rentTypeName}"></td>
+                <td th:text="${s.serviceName}"></td>
+                <td th:text="${s.serviceCode}"></td>
+                <td th:text="${s.serviceArea}"></td>
+                <td th:text="${s.serviceCost}"></td>
+                <td th:text="${s.serviceMaxPeople}"></td>
+                <td th:text="${s.standardRoom}"></td>
+                <td th:text="${s.descriptionOtherConvenience}"></td>
+                <td th:text="${s.poolArea}"></td>
+                <td th:text="${s.numberOfFloors}"></td>
+                <td>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#myModal"
+                            th:data-parameter1="${s.id}"
+                            onclick="showModal(this.getAttribute('data-parameter1'))">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </th:block>
+    </table>
+
+    <div>
+        <a class="btn btn-outline-success" th:href="@{'/services'(page=${services.number - 1})}"
+           th:if="${services.hasPrevious()}">Previous</a>
+        <span th:each="p : ${#numbers.sequence(0,services.totalPages - 1) }" th:if="${services.hasContent()}">
           <a class="btn btn-outline-success" th:href="@{'/services'(page=${p})}"
              th:text="${p+1}"
              th:if="${(p>(services.number)-1)&&(p<(services.number+3))}"
           ></a>
     </span>
-    <a class="btn btn-outline-success" th:href="@{'/services'(page=${services.number + 1})}" th:if="${services.hasNext()}">Next</a>
+        <a class="btn btn-outline-success" th:href="@{'/services'(page=${services.number + 1})}" th:if="${services.hasNext()}">Next</a>
+    </div>
 </div>
+
+
+
 
 <!--modal-->
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">

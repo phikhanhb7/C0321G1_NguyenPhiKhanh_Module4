@@ -9,12 +9,12 @@
 <div th:replace="~{layuot :: hearder}">
 </div>
 <div style="background: azure">
-    <div style="margin-top: 50px">
+    <div style=" display:inline-block;width: 60%; float: left ; margin: 15px 5%">
         <a href="/employees/create-employee">
             <button type="button" class="btn btn-primary"> ++Create Employee</button>
         </a>
     </div>
-    <div style=" text-align: right">
+    <div style=" text-align: right; display: inline-block; width: 20% ; margin:15px 5%">
         <a href="/home">
             <button type="button" class="btn btn-warning">Back to home</button>
         </a>
@@ -25,57 +25,76 @@
         <p th:text="${mes}"></p>
     </th:block>
 
-
-    <form class="d-flex justify-content-end">
-        <input class="form-control" type="search" placeholder="Search name" aria-label="Search"
-               name="search">
-        <button class="btn btn-primary  my-sm-0" type="submit">Search</button>
-    </form>
 </div>
 
+<div style="margin: 15px 5%" >
 
-<table class="table table-bordered table-striped ">
-    <tr>
-        <td>#</td>
-        <td>Employee Name</td>
-        <td>Birthday</td>
-        <td>ID Card</td>
-        <td>Employee Salary</td>
-        <td>Number Phone</td>
-        <td>Email</td>
-        <td>Address</td>
-        <td>Position</td>
-        <td>Division</td>
-        <td>EducationDegree</td>
-        <td>Edit</td>
-        <td>Delete</td>
-    </tr>
+    <div style="margin-bottom: 15px">
+        <form class="d-flex justify-content-end">
+            <input class="form-control" type="search" placeholder="Search name" aria-label="Search"
+                   name="search">
+            <button class="btn btn-primary  my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
 
-    <th:block th:each="employee,state : ${employees}">
+
+    <table class="table table-bordered table-striped ">
         <tr>
-
-            <td th:text="${state.count}"></td>
-            <td th:text="${employee.employeeName}"></td>
-            <td th:text="${employee.employeeBirthday}"></td>
-            <td th:text="${employee.employeeIdCard}"></td>
-            <td th:text="${employee.employeeSalary}"></td>
-            <td th:text="${employee.employeePhone}"></td>
-            <td th:text="${employee.employeeEmail}"></td>
-            <td th:text="${employee.employeeAddress}"></td>
-            <td th:text="${employee.position.positionName}"></td>
-            <td th:text="${employee.division.divisionName}"></td>
-            <td th:text="${employee.educationDegree.educationDegreeName}"></td>
-            <td><a th:href="@{/employees/edit-employee/__${employee.id}__}" class="btn btn-primary">Edit</a></td>
-            <td>
-                <button class="btn btn-danger" data-toggle="modal" data-target="#myModal"
-                        th:data-parameter1="${employee.id}" th:data-parameter2="${employee.employeeName}"
-                        onclick="showModal(this.getAttribute('data-parameter1'),this.getAttribute('data-parameter2'))">
-                    Delete
-                </button>
-            </td>
+            <td>#</td>
+            <td>Employee Name</td>
+            <td>Birthday</td>
+            <td>ID Card</td>
+            <td>Employee Salary</td>
+            <td>Number Phone</td>
+            <td>Email</td>
+            <td>Address</td>
+            <td>Position</td>
+            <td>Division</td>
+            <td>EducationDegree</td>
+            <td>Edit</td>
+            <td>Delete</td>
         </tr>
-    </th:block>
-</table>
+
+        <th:block th:each="employee,state : ${employees}">
+            <tr>
+
+                <td th:text="${state.count}"></td>
+                <td th:text="${employee.employeeName}"></td>
+                <td th:text="${employee.employeeBirthday}"></td>
+                <td th:text="${employee.employeeIdCard}"></td>
+                <td th:text="${employee.employeeSalary}"></td>
+                <td th:text="${employee.employeePhone}"></td>
+                <td th:text="${employee.employeeEmail}"></td>
+                <td th:text="${employee.employeeAddress}"></td>
+                <td th:text="${employee.position.positionName}"></td>
+                <td th:text="${employee.division.divisionName}"></td>
+                <td th:text="${employee.educationDegree.educationDegreeName}"></td>
+                <td><a th:href="@{/employees/edit-employee/__${employee.id}__}" class="btn btn-primary">Edit</a></td>
+                <td>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#myModal"
+                            th:data-parameter1="${employee.id}" th:data-parameter2="${employee.employeeName}"
+                            onclick="showModal(this.getAttribute('data-parameter1'),this.getAttribute('data-parameter2'))">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </th:block>
+    </table>
+
+    <!--#region phân trang-->
+    <div>
+        <a class="btn btn-outline-success" th:href="@{'/employees'(page=${employees.number - 1},keyWord=${search})}"
+           th:if="${employees.hasPrevious()}">Previous</a>
+        <span th:each="p : ${#numbers.sequence(0,employees.totalPages - 1) }" th:if="${employees.hasContent()}">
+          <a class="btn btn-outline-success" th:href="@{'/employees'(page=${p},keyWord=${search})}"
+             th:text="${p+1}"
+             th:if="${(p>(employees.number)-1)&&(p<(employees.number+3))}"
+          ></a>
+    </span>
+        <a class="btn btn-outline-success" th:href="@{'/employees'(page=${employees.number + 1},keyWord=${search})}" th:if="${employees.hasNext()}">Next</a>
+    </div>
+</div>
+
 
 
 <!--modal-->
@@ -103,18 +122,7 @@
     </div>
 </div>
 
-<!--#region phân trang-->
-<div>
-    <a class="btn btn-outline-success" th:href="@{'/employees'(page=${employees.number - 1},keyWord=${search})}"
-       th:if="${employees.hasPrevious()}">Previous</a>
-    <span th:each="p : ${#numbers.sequence(0,employees.totalPages - 1) }" th:if="${employees.hasContent()}">
-          <a class="btn btn-outline-success" th:href="@{'/employees'(page=${p},keyWord=${search})}"
-             th:text="${p+1}"
-             th:if="${(p>(employees.number)-1)&&(p<(employees.number+3))}"
-          ></a>
-    </span>
-    <a class="btn btn-outline-success" th:href="@{'/employees'(page=${employees.number + 1},keyWord=${search})}" th:if="${employees.hasNext()}">Next</a>
-</div>
+
 
 
 

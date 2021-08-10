@@ -14,13 +14,11 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/contractDetails")
@@ -63,6 +61,18 @@ public class ContractDetailController {
         ContractDetail contractDetail = new ContractDetail();
         BeanUtils.copyProperties(contractDetailDto,contractDetail);
         contractDetailService.save(contractDetail);
+        return "redirect:/contractDetails";
+    }
+
+    @GetMapping(value = "/delete-contractDetail")
+    public String deleteEmployee(@RequestParam Integer id, RedirectAttributes redirectAttributes) {
+        Optional<ContractDetail> contractDetail = contractDetailService.findById(id);
+        if (!contractDetail.isPresent()) {
+            return "/error";
+        }
+        contractDetail.get().setFlag(true);
+        contractDetailService.save(contractDetail.get());
+        redirectAttributes.addFlashAttribute("mes", "deleted successfully! ");
         return "redirect:/contractDetails";
     }
 }

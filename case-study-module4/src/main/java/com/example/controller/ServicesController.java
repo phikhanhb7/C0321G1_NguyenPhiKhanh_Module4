@@ -54,8 +54,14 @@ public class ServicesController {
     public String createService(@Valid @ModelAttribute ServiceDto serviceDto , BindingResult bindingResult, Model model,
                                 RedirectAttributes redirectAttributes){
         if (bindingResult.hasFieldErrors()){
-            model.addAttribute("serviceDto",serviceDto);
-            return "/service/create";
+            for (Services services : servicesService.findAll()){
+                if (serviceDto.getServiceCode().equals(services.getServiceCode())){
+                    model.addAttribute("codeDuplicate","Duplicate code");
+                    model.addAttribute("serviceDto",serviceDto);
+                    return "/service/create";
+                }
+            }
+
         }
         Services services = new Services();
         BeanUtils.copyProperties(serviceDto,services);

@@ -13,6 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -42,6 +43,11 @@ public class ContractDetailService implements IContractDetailService {
     @Override
     public List<ContractInterfaceDto> findAllByContractDetailByAttachService() {
         return contractDetailRepository.findAllByContractDetailByAttachService();
+    }
+
+    @Override
+    public Optional<ContractDetail> findById(Integer id) {
+        return contractDetailRepository.findById(id);
     }
 
 

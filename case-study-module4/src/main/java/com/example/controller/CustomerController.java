@@ -46,7 +46,7 @@ public class CustomerController {
 
     @PostMapping(value = "/create-customer")
     public ModelAndView saveCustomer(@Validated @ModelAttribute CustomerDto customerDto, BindingResult bindingResult) {
-
+        new CustomerDto().validate(customerDto,bindingResult);
         if (bindingResult.hasErrors()) {
             for (Customer c : customerService.findAll()) {
                 if (customerDto.getCustomerCode().equals(c.getCustomerCode())) {
@@ -57,13 +57,6 @@ public class CustomerController {
                 }
 
 
-            }
-            for (Customer c : customerService.findAll()) {
-                if (customerDto.getCustomerCode().equals(c.getCustomerCode())) {
-                    ModelAndView modelAndView = new ModelAndView("/customer/create");
-                    modelAndView.addObject("codeDuplicate", "Duplicate code");
-                    return modelAndView;
-                }
             }
         }
         Customer customer = new Customer();

@@ -8,13 +8,13 @@
 <div th:replace="~{layuot :: hearder}">
 </div>
 <div style="background: azure">
-    <div style="margin-top: 50px">
+    <div style=" display:inline-block;width: 60%; float: left ; margin: 15px 5%">
         <a href="/contracts/create-contract">
             <button type="button" class="btn btn-primary"> ++Create Contract</button>
         </a>
     </div>
 
-    <div style=" text-align: right">
+    <div style=" text-align: right; display: inline-block; width: 20% ; margin:15px 5%" >
         <a href="/home">
             <button type="button" class="btn btn-warning">Back to home</button>
         </a>
@@ -27,41 +27,56 @@
 
 </div>
 
-
-<table class="table table-bordered table-striped ">
-    <tr>
-        <td>#</td>
-        <td>customer</td>
-        <td>employee</td>
-        <td>service</td>
-        <td>contractStartDay</td>
-        <td>contractEndDay</td>
-        <td>contractDeposit</td>
-        <td>Delete</td>
-
-    </tr>
-
-    <th:block th:each="contract,state : ${contracts}">
+<div style="margin: 15px 5%">
+    <table class="table table-bordered table-striped ">
         <tr>
-
-            <td th:text="${state.count}"></td>
-            <td th:text="${contract.customer.customerName}"></td>
-            <td th:text="${contract.employee.employeeName}"></td>
-            <td th:text="${contract.service.serviceName}"></td>
-            <td th:text="${contract.contractStartDay}"></td>
-            <td th:text="${contract.contractEndDay}"></td>
-            <td th:text="${contract.contractDeposit}"></td>
-            <td>
-                <button class="btn btn-danger" data-toggle="modal" data-target="#myModal"
-                        th:data-parameter1="${contract.id}"
-                        onclick="showModal(this.getAttribute('data-parameter1'))">
-                    Delete
-                </button>
-            </td>
+            <td>#</td>
+            <td>Customer</td>
+            <td>Employee</td>
+            <td>Service</td>
+            <td>Contract StartDay</td>
+            <td>Contract EndDay</td>
+            <td>Contract Deposit</td>
+            <td>Delete</td>
 
         </tr>
-    </th:block>
-</table>
+
+        <th:block th:each="contract,state : ${contracts}">
+            <tr>
+
+                <td th:text="${state.count}"></td>
+                <td th:text="${contract.customer.customerName}"></td>
+                <td th:text="${contract.employee.employeeName}"></td>
+                <td th:text="${contract.service.serviceName}"></td>
+                <td th:text="${contract.contractStartDay}"></td>
+                <td th:text="${contract.contractEndDay}"></td>
+                <td th:text="${contract.contractDeposit}"></td>
+                <td>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#myModal"
+                            th:data-parameter1="${contract.id}"
+                            onclick="showModal(this.getAttribute('data-parameter1'))">
+                        Delete
+                    </button>
+                </td>
+
+            </tr>
+        </th:block>
+    </table>
+
+    <!--#region phân trang-->
+    <div>
+        <a class="btn btn-outline-success" th:href="@{'/contracts'(page=${contracts.number - 1})}"
+           th:if="${contracts.hasPrevious()}">Previous</a>
+        <span th:each="p : ${#numbers.sequence(0,contracts.totalPages - 1) }" th:if="${contracts.hasContent()}">
+          <a class="btn btn-outline-success" th:href="@{'/contracts'(page=${p})}"
+             th:text="${p+1}"
+             th:if="${(p>(contracts.number)-1)&&(p<(contracts.number+3))}"
+          ></a>
+    </span>
+        <a class="btn btn-outline-success" th:href="@{'/contracts'(page=${contracts.number + 1})}" th:if="${contracts.hasNext()}">Next</a>
+    </div>
+</div>
+
 <!--modal-->
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -86,18 +101,7 @@
 
     </div>
 </div>
-<!--#region phân trang-->
-<div>
-    <a class="btn btn-outline-success" th:href="@{'/contracts'(page=${contracts.number - 1})}"
-       th:if="${contracts.hasPrevious()}">Previous</a>
-    <span th:each="p : ${#numbers.sequence(0,contracts.totalPages - 1) }" th:if="${contracts.hasContent()}">
-          <a class="btn btn-outline-success" th:href="@{'/contracts'(page=${p})}"
-             th:text="${p+1}"
-             th:if="${(p>(contracts.number)-1)&&(p<(contracts.number+3))}"
-          ></a>
-    </span>
-    <a class="btn btn-outline-success" th:href="@{'/contracts'(page=${contracts.number + 1})}" th:if="${contracts.hasNext()}">Next</a>
-</div>
+
 
 
 <script>

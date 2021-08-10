@@ -16,6 +16,20 @@ public class ContractDetail {
     @JoinColumn(name = "contract_id", referencedColumnName = "id")
     private Contract contract;
 
+    private boolean flag;
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
+
     public ContractDetail() {
     }
 

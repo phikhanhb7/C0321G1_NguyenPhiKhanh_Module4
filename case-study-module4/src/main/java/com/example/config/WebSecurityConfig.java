@@ -49,10 +49,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Trang /userInfo yêu cầu phải login với vai trò ROLE_USER hoặc ROLE_ADMIN.
         // Nếu chưa login, nó sẽ redirect tới trang /login.
-        http.authorizeRequests().antMatchers("/customers","/employees","/services","/contracts").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
+        http.authorizeRequests().antMatchers("/customers","/employees","/services","/contracts","/contractDetails","/customerUsings").access("hasAnyRole('ROLE_USER', 'ROLE_ADMIN')");
 
         // Trang chỉ dành cho ADMIN
-        http.authorizeRequests().antMatchers("/employees").access("hasRole('ROLE_ADMIN')");
+        http.authorizeRequests().antMatchers("/employees",
+                "/customers/create-customer",
+                "/customers/delete-customer",
+                "/customers/edit-customer/{id}",
+                "/services/create-service",
+                "/services/delete-service",
+                "/contracts/create-contract",
+                "/contracts/delete-contract",
+                "/contractDetails/create-contractDetail",
+                "/contractDetails/delete-contractDetail").access("hasRole('ROLE_ADMIN')");
 
         // Khi người dùng đã login, với vai trò XX.
         // Nhưng truy cập vào trang yêu cầu vai trò YY,

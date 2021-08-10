@@ -12,11 +12,15 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerDto {   //implements Validator
+public class CustomerDto implements Validator{   //implements Validator
 //
 //    public final String PHONE_NUMBER="^(090|091|(\\(84\\)\\+90)|(\\(84\\)\\+91))[0-9]{7}$";
 //    public final String NAME="^[\\p{L} .'-]+$";
@@ -30,10 +34,8 @@ public class CustomerDto {   //implements Validator
     @Pattern(regexp ="^(KH-)[0-9]{4}$", message = "Pls input code correct format. Ex : KH-XXXX")
     private String customerCode;
     private CustomerType customerType;
-    @NotNull(message = "input not null")
-    @NotBlank
+    @NotBlank(message = "input not null")
     private String customerName;
-    @NotNull(message = "input not null")
     private String customerBirthDay;
     private String customerGender;
     @Pattern(regexp = "^[0-9]{10}", message = " pls input correct format !")
@@ -44,7 +46,35 @@ public class CustomerDto {   //implements Validator
     @NotBlank(message = "pls input email")
     @Email(message = "Pls input correct format")
     private String customerEmail;
+    @NotBlank(message = "pls input Address")
     private String customerAddress;
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        CustomerDto customerDto=(CustomerDto)target;
+        java.sql.Date dateNow = new java.sql.Date(System.currentTimeMillis());
+        Date date ;
+        try {
+            if (customerDto.customerBirthDay.equals("")){
+                errors.rejectValue("customerBirthDay","","Pls input ");
+            }
+            else {
+                date = new SimpleDateFormat("dd-MM-yyyy").parse(customerDto.getCustomerBirthDay());
+                if (dateNow.compareTo(date) <18){
+                    errors.rejectValue("customerBirthDay","","Birthday more than 18");
+                }
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
 //    @Override
