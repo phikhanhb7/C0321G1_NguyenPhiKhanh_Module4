@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -20,9 +21,9 @@ import java.util.List;
 @AllArgsConstructor
 public class ContractDto implements Validator {
     private  Integer id;
-
+    @NotBlank(message = "Pls input")
     private  String contractStartDay;
-
+    @NotBlank(message = "Pls input")
     private  String contractEndDay;
     @NotNull(message = "input not null")
     @Min(value = 0,message = "pls input value >0")

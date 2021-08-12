@@ -21,10 +21,10 @@ import java.time.Period;
 public class EmployeeDto implements Validator {
     private  Integer id;
     @NotNull(message = "input not null")
-    @NotBlank
+    @NotBlank(message = "Pls input")
     private  String employeeName;
     @NotNull(message = "input not null")
-    @NotBlank
+    @NotBlank(message = "Pls input")
     private  String employeeBirthday;
     @NotNull(message = "input not null")
     @Min(value = 0,message = "pls input value >0")
@@ -36,9 +36,9 @@ public class EmployeeDto implements Validator {
     @Pattern(regexp = "^090\\d{7}|\\(84\\)\\+90\\d{7}|091\\d{7}|\\(84\\)\\+91\\d{7}$",message = "Số điện thoại phải đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx")
     private  String employeePhone;
     @NotNull
-    @Email
+    @Email(message = "Pls input")
     private  String employeeEmail;
-    @NotNull
+    @NotBlank(message = "Pls input")
     private String employeeAddress;
     private Division division;
     private Position position;

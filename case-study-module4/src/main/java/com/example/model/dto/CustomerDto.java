@@ -36,8 +36,9 @@ public class CustomerDto implements Validator {   //implements Validator
     @Pattern(regexp = "^(KH-)[0-9]{4}$", message = "Pls input code correct format. Ex : KH-XXXX")
     private String customerCode;
     private CustomerType customerType;
-    @NotBlank(message = "input not null")
+    @NotBlank(message = "Pls input")
     private String customerName;
+    @NotBlank(message = "Pls input")
     private String customerBirthDay;
     private String customerGender;
     @Pattern(regexp = "^[0-9]{10}", message = " pls input correct format !")
