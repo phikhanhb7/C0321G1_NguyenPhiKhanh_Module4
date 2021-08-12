@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{layuot :: head}">
+
+</head>
+
+<body>
+
+<div th:replace="~{layuot :: hearder}">
+</div>
+<div style="background: azure">
+    <div style=" display:inline-block;width: 60%; float: left ; margin: 15px 5%">
+        <a href="/question/create-question">
+            <button type="button" class="btn btn-primary"> ++Create Question</button>
+        </a>
+    </div>
+    <div style=" text-align: right; display: inline-block; width: 20% ; margin:15px 5%">
+        <a href="/home">
+            <button type="button" class="btn btn-warning">Back to home</button>
+        </a>
+    </div>
+    <h1 style="color: blue; text-align: center;">Question</h1>
+
+    <th:block th:if="${mes}">
+        <p th:text="${mes}"></p>
+    </th:block>
+
+</div>
+
+<div style="margin: 15px 5%" >
+
+    <div style="margin-bottom: 15px">
+        <form class="d-flex justify-content-end">
+            <input style="width: 200px" class="form-control" type="text" placeholder="Search name" aria-label="Search"
+                   name="name">
+            <select name="id" class="mx-2">
+                <option value="" selected disabled hidden>  - Choose Question Type - </option>
+                <option th:each="question : ${questionTypeList}"
+                        th:value="${question.id}"
+                        th:text="${question.name}">
+                </option>
+            </select>
+            <button class="btn btn-primary  my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+
+
+    <table class="table table-bordered table-striped ">
+        <tr>
+            <td>#</td>
+            <td>Title</td>
+            <td>Question Type</td>
+            <td>Date Create</td>
+            <td>Status</td>
+            <td>Edit</td>
+            <td>Delete</td>
+        </tr>
+
+        <th:block th:each="question,state : ${questionList}">
+            <tr>
+
+                <td th:text="${state.count}"></td>
+                <td th:text="${question.title}"></td>
+                <td th:text="${question.questionType.name}"></td>
+                <td th:text="${question.dateCreate}"></td>
+                <td th:text="${question.status}"></td>
+                <td><a th:href="@{/question/edit-question/__${question.id}__}" class="btn btn-primary">Edit</a></td>
+                <td>
+                    <button class="btn btn-danger" data-toggle="modal" data-target="#myModal"
+                            th:data-parameter1="${question.id}" th:data-parameter2="${question.title}"
+                            onclick="showModal(this.getAttribute('data-parameter1'),this.getAttribute('data-parameter2'))">
+                        Delete
+                    </button>
+                </td>
+            </tr>
+        </th:block>
+    </table>
+
+    <!--#region phân trang-->
+    <div>
+        <a class="btn btn-outline-success" th:href="@{'/question'(page=${questionList.number - 1},name=${nameSearch},id = ${idSearch} )}"
+           th:if="${questionList.hasPrevious()}">Previous</a>
+        <span th:each="p : ${#numbers.sequence(0,questionList.totalPages - 1) }" th:if="${questionList.hasContent()}">
+          <a class="btn btn-outline-success" th:href="@{'/question'(page=${p},name=${nameSearch},id = ${idSearch})}"
+             th:text="${p+1}"
+             th:if="${(p>(questionList.number)-1)&&(p<(questionList.number+3))}"
+          ></a>
+    </span>
+        <a class="btn btn-outline-success" th:href="@{'/question'(page=${questionList.number + 1},name=${nameSearch},id = ${idSearch})}" th:if="${questionList.hasNext()}">Next</a>
+    </div>
+</div>
+
+
+
+<!--modal-->
+<div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form th:action="@{/question/delete-question}" method="get">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="myModalLabel">Accept delete Employee </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Do you want to delete: <h5 id="questionTitle">???</h5>
+                </div>
+                <div class="modal-footer">
+                    <input type="button" class="btn btn-secondary" data-dismiss="modal" value="Cancel">
+                    <input type="submit" class="btn btn-danger btn-ok" id="delete" value="Delete">
+                    <input type="hidden" id="questionId" name="id">
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+
+
+
+<script>
+    function showModal(id, name) {
+        document.getElementById("questionId").value = id;
+        document.getElementById("questionTitle").innerText = name;
+    }
+</script>
+</body>
+</html>

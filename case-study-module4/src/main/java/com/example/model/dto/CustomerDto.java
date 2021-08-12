@@ -14,24 +14,26 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.Date;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerDto implements Validator{   //implements Validator
-//
-//    public final String PHONE_NUMBER="^(090|091|(\\(84\\)\\+90)|(\\(84\\)\\+91))[0-9]{7}$";
-//    public final String NAME="^[\\p{L} .'-]+$";
-//    public final String DATE="^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)$"
-//            + "|^(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))$"
-//            + "|^(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))$"
-//            + "|^(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))$";
+public class CustomerDto implements Validator {   //implements Validator
+    //
+    public final String PHONE_NUMBER = "^(090|091|(\\(84\\)\\+90)|(\\(84\\)\\+91))[0-9]{7}$";
+    public final String NAME = "^[\\p{L} .'-]+$";
+    public final String DATE = "^((2000|2400|2800|(19|2[0-9](0[48]|[2468][048]|[13579][26])))-02-29)$"
+            + "|^(((19|2[0-9])[0-9]{2})-02-(0[1-9]|1[0-9]|2[0-8]))$"
+            + "|^(((19|2[0-9])[0-9]{2})-(0[13578]|10|12)-(0[1-9]|[12][0-9]|3[01]))$"
+            + "|^(((19|2[0-9])[0-9]{2})-(0[469]|11)-(0[1-9]|[12][0-9]|30))$";
     private Integer id;
     @NotBlank
 //    @UniqueElements
-    @Pattern(regexp ="^(KH-)[0-9]{4}$", message = "Pls input code correct format. Ex : KH-XXXX")
+    @Pattern(regexp = "^(KH-)[0-9]{4}$", message = "Pls input code correct format. Ex : KH-XXXX")
     private String customerCode;
     private CustomerType customerType;
     @NotBlank(message = "input not null")
@@ -41,7 +43,7 @@ public class CustomerDto implements Validator{   //implements Validator
     @Pattern(regexp = "^[0-9]{10}", message = " pls input correct format !")
     private String customerIdCard;
     @NotNull
-    @Pattern(regexp = "^090\\d{7}|\\(84\\)\\+90\\d{7}|091\\d{7}|\\(84\\)\\+91\\d{7}$",message = "Số điện thoại phải đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx")
+    @Pattern(regexp = "^090\\d{7}|\\(84\\)\\+90\\d{7}|091\\d{7}|\\(84\\)\\+91\\d{7}$", message = "Số điện thoại phải đúng định dạng 090xxxxxxx hoặc 091xxxxxxx hoặc (84)+90xxxxxxx hoặc (84)+91xxxxxxx")
     private String customerPhone;
     @NotBlank(message = "pls input email")
     @Email(message = "Pls input correct format")
@@ -56,24 +58,17 @@ public class CustomerDto implements Validator{   //implements Validator
 
     @Override
     public void validate(Object target, Errors errors) {
-        CustomerDto customerDto=(CustomerDto)target;
-        java.sql.Date dateNow = new java.sql.Date(System.currentTimeMillis());
-        Date date ;
-        try {
-            if (customerDto.customerBirthDay.equals("")){
-                errors.rejectValue("customerBirthDay","","Pls input ");
+        CustomerDto customerDto = (CustomerDto) target;
+        if (customerDto.customerBirthDay.equals("")) {
+            errors.rejectValue("customerBirthDay", "", "Pls input ");
+        } else {
+            int age = Period.between(LocalDate.parse(customerDto.customerBirthDay), LocalDate.now()).getYears();
+            if (age < 18) {
+                errors.rejectValue("customerBirthDay", "", "Age must be more than 18");
+            }else if (age > 150){
+                errors.rejectValue("customerBirthDay", "", "You DIE");
             }
-            else {
-                date = new SimpleDateFormat("dd-MM-yyyy").parse(customerDto.getCustomerBirthDay());
-                if (dateNow.compareTo(date) <18){
-                    errors.rejectValue("customerBirthDay","","Birthday more than 18");
-                }
-            }
-
-        } catch (ParseException e) {
-            e.printStackTrace();
         }
-
     }
 
 

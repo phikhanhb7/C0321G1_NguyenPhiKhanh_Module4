@@ -37,17 +37,17 @@
 <body>
 <div th:fragment="hearder">
     <div class="container-fluid d-flex position-relative border-0 row   ">
-        <div class="col-3 ">
+        <div class="col-4 ">
             <a href="" class="img-fluid"><img src="/img/logo_furama/logo_furama.png" height="117" width="87"/></a>
         </div>
-        <div class="col-3">
+        <div class="col-4">
             <a class=" img-fluid mx-5 px-5 align-items-center img-fluid"
                href="https://www.tripadvisor.com/Hotel_Review-g298085-d302750-Reviews-Furama_Resort_Danang-Da_Nang.html">
                 <img
                         class="img-fluid  " src="/img/logo_tripadvisor/logo_tripadvisor.png"
                 /></a>
         </div>
-       <div sec:authorize="isAuthenticated()" class="col-sm-3 text-right align-self-center"> Xin chào :
+       <div sec:authorize="isAuthenticated()" class="col-sm-4 text-right align-self-center"> Xin chào :
             <span sec:authentication="name"></span>
            <a  th:href="@{/logout}">Thoát</a>
         </div>

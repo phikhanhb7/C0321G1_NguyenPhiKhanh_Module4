@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+            integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+            integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div th:fragment="hearder">
+    <div style="background-color: #1F1D1E" class="align-self-center justify-content-center">
+        <div class="container-fluid d-flex position-relative border-0 row   ">
+            <div class="col-2">
+
+            </div>
+
+            <div class="col-8 ">
+                <a href="" class="img-fluid" style="width: 100%">
+                    <img class="pt-5 pb-5" src="/5.jpg"/></a>
+            </div>
+            <div class="col-sm-2 text-right align-self-center">
+                <p style="color: azure">Hello</p>
+            </div>
+        </div>
+    </div>
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-dark mt-1 mb-1 py-5 container-fluid font-weight-bolder px-0 text-white"
+             id="nav-bar-sticky"
+             style=" height: 47px;background-image: url('9.jpg')">
+
+            <div class="collapse navbar-collapse  " id="navbarsExample07">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active px-5">
+                        <a class="text-white" href="/">Home</a>
+                    </li>
+
+                    <li class="nav-item active px-5">
+                        <a class="text-white" href="/question">Question</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </nav>
+
+    </div>
+</div>
+
+
+<footer th:fragment="footer" class="text-white ">
+
+
+    <div class="container-fluid text-center mt-2 px-2 justify-content-center align-items-center " id="footer"
+         style=" background-image: url('9.jpg')">
+        <span>COVID 19 UPDATE: The safety and well-being are our utmost priority</span>
+    </div>
+</footer>
+</body>
+</html>

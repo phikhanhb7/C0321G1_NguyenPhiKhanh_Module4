@@ -7,13 +7,18 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
 import javax.validation.constraints.*;
+import java.time.LocalDate;
+import java.time.Period;
+
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmployeeDto {
+public class EmployeeDto implements Validator {
     private  Integer id;
     @NotNull(message = "input not null")
     @NotBlank
@@ -39,4 +44,23 @@ public class EmployeeDto {
     private Position position;
     private EducationDegree educationDegree;
 
+    @Override
+    public boolean supports(Class<?> clazz) {
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+            EmployeeDto employeeDto= (EmployeeDto) target;
+        if (employeeDto.employeeBirthday.equals("")){
+            errors.rejectValue("employeeBirthday","","Pls input");
+        }else {
+            int age = Period.between(LocalDate.parse(employeeDto.employeeBirthday),LocalDate.now()).getYears();
+            if (age < 18) {
+                errors.rejectValue("employeeBirthday", "", "Age must be more than 18");
+            }else if (age > 150){
+                errors.rejectValue("employeeBirthday", "", "You DIE");
+            }
+        }
+    }
 }
